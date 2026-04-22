@@ -23,7 +23,11 @@ azure-agentic-infraops/  (APEX)
 ├── tests/                   # Test checklists and exec plans
 │   └── exec-plans/          # Execution plans and tech debt tracker
 ├── infra/bicep/             # Bicep module library
-├── mcp/azure-pricing-mcp/   # Azure Pricing MCP server
+├── tools/
+│   ├── apex-recall/        # Progressive session recall CLI
+│   └── mcp-servers/
+│       ├── azure-pricing/  # Azure Pricing MCP server
+│       └── drawio/         # Draw.io MCP server
 ├── scripts/                 # Validation and automation scripts
 └── temp/                    # Scratch space (gitignored for outputs)
 ```
@@ -93,7 +97,6 @@ Each subdirectory under `.github/skills/` with a `SKILL.md` is one skill.
 | `azure-defaults`              | `azure-defaults/`              | Azure Conventions   | "azure defaults", "naming"                |
 | `azure-deploy`                | `azure-deploy/`                | Deployment          | "azd up", "deploy", "go live"             |
 | `azure-diagnostics`           | `azure-diagnostics/`           | Troubleshooting     | "troubleshoot", "KQL", "health check"     |
-| `excalidraw`                  | `excalidraw/`                  | Whiteboarding       | "whiteboard", "brainstorm", "sketch"      |
 | `python-diagrams`             | `python-diagrams/`             | Document Creation   | "create chart", "WAF chart"               |
 | `mermaid`                     | `mermaid/`                     | Document Creation   | "mermaid diagram", "flowchart"            |
 | `azure-diagrams`              | `azure-diagrams/`              | Routing             | Routes to drawio/python-diagrams/mermaid  |
@@ -121,7 +124,6 @@ Each subdirectory under `.github/skills/` with a `SKILL.md` is one skill.
 | `microsoft-docs`              | `microsoft-docs/`              | Documentation       | "Azure docs", "quickstart"                |
 | `microsoft-foundry`           | `microsoft-foundry/`           | AI Platform         | "Foundry agent", "deploy agent"           |
 | `microsoft-skill-creator`     | `microsoft-skill-creator/`     | Meta                | "create skill for Microsoft tech"         |
-| `session-resume`              | `session-resume/`              | Workflow            | "resume session", "checkpoint"            |
 | `terraform-patterns`          | `terraform-patterns/`          | IaC Patterns        | "terraform pattern", "AVM-TF", "HCL"      |
 | `terraform-search-import`     | `terraform-search-import/`     | IaC Import          | "import resources", "terraform import"    |
 | `terraform-test`              | `terraform-test/`              | IaC Testing         | "terraform test", ".tftest.hcl"           |
