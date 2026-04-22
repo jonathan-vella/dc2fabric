@@ -12,7 +12,7 @@ Validated by `scripts/validate-branch-naming.sh` and `scripts/validate-branch-sc
 | Prefix          | Allowed File Paths                                      |
 | --------------- | ------------------------------------------------------- |
 | `docs/`         | `site/`, `README.md`, `CONTRIBUTING.md`, `CHANGELOG.md` |
-| `agents/`       | `.github/agents/`, `.github/agent-registry.json`        |
+| `agents/`       | `.github/agents/`, `tools/registry/agent-registry.json`        |
 | `skills/`       | `.github/skills/`                                       |
 | `infra/`        | `infra/`                                                |
 | `scripts/`      | `scripts/`, `package.json`                              |
@@ -40,10 +40,10 @@ git checkout -b infra/add-private-endpoints
 
 ```bash
 # Check branch name locally
-bash scripts/validate-branch-naming.sh
+bash tools/scripts/validate-branch-naming.sh
 
 # Check file scope locally
-bash scripts/validate-branch-scope.sh
+bash tools/scripts/validate-branch-scope.sh
 ```
 
 ## Agent Workflow

@@ -196,7 +196,6 @@ Always run `npm run lint:md` and relevant validations before committing.
     context-shredding/ # Runtime context compression tiers and templates
     iac-common/        # Shared deploy patterns + circuit-breaker.md
   instructions/        # File-type rules with glob-based auto-application
-  agent-registry.json  # Machine-readable agent role → file/model/skills mapping
   copilot-instructions.md  # VS Code Copilot-specific orchestration instructions
 agent-output/          # All agent-generated artifacts organized by project
   {project}/           # Per-project: 00-session-state.json + 01-requirements.md through 07-*.md
@@ -211,13 +210,17 @@ infra/
       plan.md          # azure-prepare output — source of truth for validate/deploy
 assets/
   drawio-libraries/      # Draw.io Azure icon libraries (for VS Code extension; MCP server has built-in icons) (mxlibrary XML + mxfile.xsd)
-scripts/               # Validation and maintenance scripts (Node.js)
 tools/
   apex-recall/         # Progressive session recall CLI (Python, pip-installable)
   mcp-servers/
     azure-pricing/     # Custom Azure Pricing MCP server (Python)
     drawio/            # Draw.io MCP server (Deno/TypeScript)
+  registry/
+    agent-registry.json  # Machine-readable agent role → file/model/skills mapping
+    count-manifest.json  # Canonical entity counts (computed from globs)
   schemas/             # JSON schemas for session state, governance, workflow, etc.
+  scripts/             # Validation and maintenance scripts (Node.js)
+  tests/               # Test suites, E2E inputs, exec plans
 site/
   src/content/docs/    # Published user-facing documentation (Astro Starlight)
   public/              # Site-served static assets

@@ -33,7 +33,7 @@
 **Source of truth**: List `.github/agents/*.agent.md` files
 (exclude `_subagents/` directory).
 
-**Expected count**: computed dynamically from `.github/count-manifest.json`
+**Expected count**: computed dynamically from `tools/registry/count-manifest.json`
 (run `validate:no-hardcoded-counts` to verify)
 
 **Files to check**:
@@ -51,7 +51,7 @@ no longer exist.
 **Source of truth**: List `.github/skills/*/` directories
 (exclude `README.md` file).
 
-**Expected count**: computed dynamically from `.github/count-manifest.json`
+**Expected count**: computed dynamically from `tools/registry/count-manifest.json`
 (run `validate:no-hardcoded-counts` to verify)
 
 **Files to check**:
@@ -105,7 +105,7 @@ appropriate category table. Remove entries for deleted skills.
 
 **Source of truth**: List `.github/instructions/*.instructions.md` files.
 
-**Expected count** (as of 2026-02-26): computed dynamically from `.github/count-manifest.json`
+**Expected count** (as of 2026-02-26): computed dynamically from `tools/registry/count-manifest.json`
 (run `validate:no-hardcoded-counts` to verify)
 
 **Files to check**: Only relevant if the root
@@ -117,7 +117,7 @@ appropriate category table. Remove entries for deleted skills.
 
 **Source of truth**: List `.github/skills/azure-artifacts/templates/*.template.md` files.
 
-**Expected count** (as of 2026-02-09): computed dynamically from `.github/count-manifest.json`
+**Expected count** (as of 2026-02-09): computed dynamically from `tools/registry/count-manifest.json`
 (run `validate:no-hardcoded-counts` to verify)
 
 **Files to check**: Only relevant if documentation references
@@ -134,7 +134,7 @@ template counts.
 | File                                    | What to verify                                      |
 | --------------------------------------- | --------------------------------------------------- |
 | `QUALITY_SCORE.md`                      | Grades reflect current state; change log up to date |
-| `tests/exec-plans/tech-debt-tracker.md` | Active items still relevant; resolved items moved   |
+| `tools/tests/exec-plans/tech-debt-tracker.md` | Active items still relevant; resolved items moved   |
 
 **Auto-fix**: Update grades and log entries in `QUALITY_SCORE.md`. Mark resolved debt items
 as resolved with the current date.
