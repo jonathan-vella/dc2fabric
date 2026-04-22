@@ -171,7 +171,7 @@
     ".github/prompts/**",
 
     // Utility scripts with embedded examples
-    "scripts/markdown-prettifiers/**",
+    "tools/scripts/markdown-prettifiers/**",
 
     // Agent-generated output (validated by artifact-templates validator)
     "agent-output/**",
@@ -212,10 +212,10 @@
     ".github/skills/microsoft-foundry/**",
 
     // E2E test input documents (long-form RFQ/RFP prose, not production docs)
-    "tests/e2e-inputs/**",
+    "tools/tests/e2e-inputs/**",
 
     // Test prompt files (long-form examples, not production docs)
-    "tests/prompts/**",
+    "tools/tests/prompts/**",
 
     // Demo walkthrough content (rendered agent output, validated by artifact-templates)
     "site/src/content/docs/demo/**",

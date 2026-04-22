@@ -25,16 +25,19 @@ azure-agentic-infraops/  (APEX)
 ├── infra/bicep/             # Bicep module library
 ├── tools/
 │   ├── apex-recall/        # Progressive session recall CLI
-│   └── mcp-servers/
-│       ├── azure-pricing/  # Azure Pricing MCP server
-│       └── drawio/         # Draw.io MCP server
+│   ├── mcp-servers/
+│   │   ├── azure-pricing/  # Azure Pricing MCP server
+│   │   └── drawio/         # Draw.io MCP server
+│   ├── registry/           # Agent registry + count manifest
+│   ├── schemas/            # JSON schemas
+│   └── scripts/            # Validation and maintenance scripts
 ├── scripts/                 # Validation and automation scripts
 └── temp/                    # Scratch space (gitignored for outputs)
 ```
 
 ## Agent Inventory
 
-See `.github/count-manifest.json` for canonical counts.
+See `tools/registry/count-manifest.json` for canonical counts.
 
 ### Primary Agents
 
@@ -79,7 +82,7 @@ All shared context previously in `_shared/` is now consolidated into skills:
 
 ## Skill Catalog
 
-See `.github/count-manifest.json` for canonical skill counts.
+See `tools/registry/count-manifest.json` for canonical skill counts.
 Each subdirectory under `.github/skills/` with a `SKILL.md` is one skill.
 
 | Skill                         | Folder                         | Category            | Triggers                                  |
@@ -132,7 +135,7 @@ Each subdirectory under `.github/skills/` with a `SKILL.md` is one skill.
 ## Template Inventory
 
 All in `.github/skills/azure-artifacts/templates/`. Naming: `{step}-{name}.template.md`.
-See `.github/count-manifest.json` for canonical counts.
+See `tools/registry/count-manifest.json` for canonical counts.
 
 | Template                                  | Artifact             | Validation        |
 | ----------------------------------------- | -------------------- | ----------------- |
@@ -157,7 +160,7 @@ See `.github/count-manifest.json` for canonical counts.
 
 ## Instruction File Map
 
-See `.github/count-manifest.json` for canonical counts.
+See `tools/registry/count-manifest.json` for canonical counts.
 
 | Instruction                                    | Applies To (glob)                                               |
 | ---------------------------------------------- | --------------------------------------------------------------- |
@@ -213,7 +216,7 @@ updating when agents or skills change:
 | `site/src/content/docs/`                | Published documentation pages           |
 | `docs.instructions.md`                  | Site docs standards                     |
 | `QUALITY_SCORE.md`                      | Project health grades (doc-gardening)   |
-| `tests/exec-plans/tech-debt-tracker.md` | Tech debt inventory                     |
+| `tools/tests/exec-plans/tech-debt-tracker.md` | Tech debt inventory                     |
 | `VERSION.md`                            | Canonical version number                |
 | `CHANGELOG.md`                          | Release history                         |
 | `README.md` (root)                      | Overview, project structure, tech stack |
