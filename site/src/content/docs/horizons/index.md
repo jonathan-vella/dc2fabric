@@ -85,9 +85,13 @@ which pattern fits:
 
 ```mermaid
 graph LR
-  A{"Workload<br/>assessment"} -->|"Stable, low-change"| H1["**Horizon 1**<br/>Lift & Shift"]
-  A -->|"High business value,<br/>needs agility"| H2["**Horizon 2**<br/>Modernize"]
-  A -->|"Start H1,<br/>evolve later"| BOTH["**H1 → H2**<br/>Phased"]
+  classDef h1     fill:#0078d4,stroke:#005a9e,color:#fff
+  classDef h2     fill:#038387,stroke:#025356,color:#fff
+  classDef phased fill:#742774,stroke:#5a1e5a,color:#fff
+  A{"Workload<br/>assessment"}
+  A -->|"Stable, low-change"| H1(["<b>Horizon 1</b><br/>Lift & Shift"]):::h1
+  A -->|"High business value,<br/>needs agility"| H2(["<b>Horizon 2</b><br/>Modernize"]):::h2
+  A -->|"Start H1,<br/>evolve later"| BOTH(["<b>H1 → H2</b><br/>Phased"]):::phased
 ```
 
 - **Some workloads stay H1 forever** — they are stable, well-understood,

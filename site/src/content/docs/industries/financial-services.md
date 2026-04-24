@@ -80,21 +80,30 @@ Azure Migrate reveals the estate:
 
 ```mermaid
 graph TB
-  subgraph "Horizon 1"
-    CORE["Core Banking → SQL MI"]
-    REG["Regulatory DB → SQL MI"]
+  classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
+  classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
+  classDef bi      fill:#fde8f9,stroke:#742774,color:#3a003a
+  subgraph h1["Horizon 1"]
+    CORE[("Core Banking → SQL MI")]:::azure
+    REG[("Regulatory DB → SQL MI")]:::azure
   end
-  subgraph "Horizon 2"
-    DIGI["Digital Banking → Azure SQL DB"]
-    FRAUD["Fraud Engine → Azure SQL DB"]
+  subgraph h2["Horizon 2"]
+    DIGI[("Digital Banking → Azure SQL DB")]:::azure
+    FRAUD[("Fraud Engine → Azure SQL DB")]:::azure
   end
-  CORE -->|"Mirror"| FAB["**Fabric OneLake**"]
+  FAB(["Fabric OneLake"]):::onelake
+  PBI["Power BI<br/>Regulatory Dashboards"]:::bi
+  ML["Data Science<br/>Fraud Detection Models"]:::bi
+  RTI["Real-Time Intelligence<br/>Transaction Monitoring"]:::bi
+  CORE -->|"Mirror"| FAB
   REG -->|"Mirror"| FAB
   DIGI -->|"Mirror"| FAB
   FRAUD -->|"Mirror"| FAB
-  FAB --> PBI["**Power BI**<br/>Regulatory Dashboards"]
-  FAB --> ML["**Data Science**<br/>Fraud Detection Models"]
-  FAB --> RTI["**Real-Time Intelligence**<br/>Transaction Monitoring"]
+  FAB --> PBI
+  FAB --> ML
+  FAB --> RTI
+  style h1 fill:#e6f3ff,stroke:#0078d4
+  style h2 fill:#e6f3ff,stroke:#0078d4
 ```
 
 **Business outcomes:**

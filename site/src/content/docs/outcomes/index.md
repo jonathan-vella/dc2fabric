@@ -109,7 +109,14 @@ their Azure and Fabric investments:
 - **Operational maturity** — Evolve from reactive operations to proactive
   monitoring, automated remediation, and SRE practices
 - **Fabric expansion** — Onboard new data sources, build additional Power BI
-  dashboards, and introduce AI/ML workloads as the data estate grows
+  dashboards, and introduce AI/ML workloads as the data estate grows.
+  Emerging capabilities like [Fabric IQ](https://learn.microsoft.com/fabric/iq/overview)
+  (unified data contextualization) and
+  [Foundry IQ](https://learn.microsoft.com/azure/foundry/agents/concepts/what-is-foundry-iq)
+  (AI agents reasoning over governed data) extend the platform further
+- **Governance maturity** — Use [Microsoft Purview](https://learn.microsoft.com/azure/cloud-adoption-framework/data/governance-security-baselines-purview-data-estate-unify-data-platform)
+  for unified data governance, classification, and compliance across the
+  full data estate — OneLake, Azure, on-premises, and third-party sources
 - **H1 → H2 evolution** — Re-evaluate H1 workloads periodically; when the
   business case justifies modernization, plan the transition to H2
 - **Skills development** — Continue upskilling the customer team in Azure,

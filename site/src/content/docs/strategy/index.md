@@ -50,8 +50,13 @@ a technology refresh cycle.
 
 ## Cloud Adoption Framework — Strategy and Plan
 
-The Microsoft Cloud Adoption Framework (CAF) provides a structured approach to
-this conversation. In the **Strategy phase**, we help the customer articulate:
+The Microsoft [Cloud Adoption Framework](https://learn.microsoft.com/azure/cloud-adoption-framework/)
+(CAF) spans the full cloud lifecycle — Strategy, Plan, Ready, Migrate,
+Modernize, Cloud-native, Govern, Secure, and Manage. In the dc2fabric
+journey we start with **Strategy** and **Plan**; the remaining phases
+(Ready, Govern, Secure, Manage) apply throughout execution and operations.
+
+In the **Strategy phase**, we help the customer articulate:
 
 - **Motivations** — Why now? What business event or pressure is driving change?
 - **Business outcomes** — What measurable results does success look like?

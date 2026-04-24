@@ -48,7 +48,7 @@ of data latency. SQL MI Mirroring eliminates all of that:
 | Build and maintain ETL pipelines  | Zero-ETL — mirroring is built in    |
 | Hours or days of data latency     | Near-real-time (seconds to minutes) |
 | Separate data warehouse to manage | Data lands directly in OneLake      |
-| Additional infrastructure cost    | Included with Fabric capacity       |
+| Additional infrastructure cost    | Uses existing Fabric capacity       |
 
 ## What You Unlock
 
@@ -59,10 +59,17 @@ Once data is in Fabric, the entire Fabric platform is available:
 - **Data Science** — Machine learning models trained on production data
 - **Real-Time Intelligence** — Event-driven analytics and alerting
 
-:::note[Zero disruption to the running application]
+:::note[Minimal disruption to the running application]
 The mirrored database in Fabric is a read replica. The production SQL MI
-instance continues to serve the application with zero performance impact.
+instance continues to serve the application with minimal performance impact.
 The analytics workload runs entirely in Fabric, on Fabric capacity.
+:::
+
+:::note[Mirroring is one of two Fabric data access methods]
+Fabric also supports **shortcuts** — a virtualization layer that provides
+zero-copy access to data in Azure Data Lake Storage, Amazon S3, Dataverse,
+and other sources without replicating it. For SQL MI, mirroring is the
+primary mechanism; shortcuts complement it for non-SQL data sources.
 :::
 
 ## When to Enable Mirroring

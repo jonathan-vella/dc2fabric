@@ -6,9 +6,9 @@ sidebar:
 ---
 
 :::tip[TL;DR]
-The five official MCEM stages — Listen & Consult, Inspire & Design,
-Empower & Achieve, Realize Value, Manage & Optimize — map to the
-dc2fabric journey. H1 and H2 run in overlapping phases across Stages 2–4,
+The dc2fabric journey maps to five MCEM stages — Define the Strategy,
+Discover & Design, Migrate & Modernize, Realize the Value, Optimize &
+Grow. H1 and H2 run in overlapping phases across Stages 2–4,
 with Fabric going live as mirroring is enabled. Stage 5 is ongoing.
 :::
 

@@ -67,6 +67,7 @@ in Horizon 2. The approach depends on the application's complexity:
 1. **Upgrade in place** — For well-structured applications, use the
    .NET Upgrade Assistant (or the newer GitHub Copilot modernization
    agent in Visual Studio) to migrate from .NET Framework to .NET 8+
+   (or the latest LTS release)
 2. **Strangler fig pattern** — For large monoliths, extract services
    incrementally while the legacy application continues to run
 3. **Rewrite critical paths** — For deeply coupled code, rewrite the

@@ -79,21 +79,30 @@ Azure Migrate reveals the estate:
 
 ```mermaid
 graph TB
-  subgraph "Horizon 1"
-    ERP["ERP → SQL MI"]
-    LOYALTY["Loyalty → SQL MI"]
+  classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
+  classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
+  classDef bi      fill:#fde8f9,stroke:#742774,color:#3a003a
+  subgraph h1["Horizon 1"]
+    ERP[("ERP → SQL MI")]:::azure
+    LOYALTY[("Loyalty → SQL MI")]:::azure
   end
-  subgraph "Horizon 2"
-    ECOM["E-commerce → Azure SQL DB"]
-    CUST["Customer Analytics → Azure SQL DB"]
+  subgraph h2["Horizon 2"]
+    ECOM[("E-commerce → Azure SQL DB")]:::azure
+    CUST[("Customer Analytics → Azure SQL DB")]:::azure
   end
-  ERP -->|"Mirror"| FAB["**Fabric OneLake**"]
+  FAB(["Fabric OneLake"]):::onelake
+  PBI["Power BI<br/>Customer 360 Dashboard"]:::bi
+  ML["Data Science<br/>Recommendation Engine"]:::bi
+  RTI["Real-Time Intelligence<br/>Inventory Alerts"]:::bi
+  ERP -->|"Mirror"| FAB
   LOYALTY -->|"Mirror"| FAB
   ECOM -->|"Mirror"| FAB
   CUST -->|"Mirror"| FAB
-  FAB --> PBI["**Power BI**<br/>Customer 360 Dashboard"]
-  FAB --> ML["**Data Science**<br/>Recommendation Engine"]
-  FAB --> RTI["**Real-Time Intelligence**<br/>Inventory Alerts"]
+  FAB --> PBI
+  FAB --> ML
+  FAB --> RTI
+  style h1 fill:#e6f3ff,stroke:#0078d4
+  style h2 fill:#e6f3ff,stroke:#0078d4
 ```
 
 **Business outcomes:**

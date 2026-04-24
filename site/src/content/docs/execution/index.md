@@ -44,8 +44,8 @@ gantt
 
 ### Horizon 1 — Execution Steps
 
-1. **Prepare landing zone** — Azure Virtual Network, NSGs, Azure Backup
-   vaults, monitoring baselines
+1. **Prepare landing zone** (CAF [Ready](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/) phase) —
+   Azure Virtual Network, NSGs, Azure Backup vaults, monitoring baselines
 2. **Migrate VMs in waves** — Use Azure Migrate to replicate and cut over
    VMs in planned waves, starting with low-risk workloads
 3. **Migrate databases** — Use the Managed Instance link (preferred for

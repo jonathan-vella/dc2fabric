@@ -23,7 +23,7 @@ Contoso's business is under pressure from multiple directions:
 - **Supply chain disruption** — Global events have exposed the fragility
   of Contoso's just-in-time supply chain. Leadership wants real-time
   visibility into production, inventory, and supplier performance.
-- **Aging infrastructure** — The on-premises data center runs 120+ Windows
+- **Aging infrastructure** — The on-premises data center runs 127 Windows
   Server VMs, including a critical ERP system built on .NET Framework 4.6
   with a SQL Server 2016 backend.
 - **No analytics capability** — Production data is trapped in application
@@ -76,20 +76,28 @@ Azure Migrate reveals the estate:
 
 ```mermaid
 graph TB
-  subgraph "Horizon 1"
-    ERP["ERP → SQL MI"]
-    MES["MES → SQL MI"]
+  classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
+  classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
+  classDef bi      fill:#fde8f9,stroke:#742774,color:#3a003a
+  subgraph h1["Horizon 1"]
+    ERP[("ERP → SQL MI")]:::azure
+    MES[("MES → SQL MI")]:::azure
   end
-  subgraph "Horizon 2"
-    PORTAL["Customer Portal → Azure SQL DB"]
-    SUPPLY["Supply Chain App → Azure SQL DB"]
+  subgraph h2["Horizon 2"]
+    PORTAL[("Customer Portal → Azure SQL DB")]:::azure
+    SUPPLY[("Supply Chain App → Azure SQL DB")]:::azure
   end
-  ERP -->|"Mirror"| FAB["**Fabric OneLake**"]
+  FAB(["Fabric OneLake"]):::onelake
+  PBI["Power BI<br/>Supply Chain Dashboard"]:::bi
+  ML["Data Science<br/>Predictive Maintenance"]:::bi
+  ERP -->|"Mirror"| FAB
   MES -->|"Mirror"| FAB
   PORTAL -->|"Mirror"| FAB
   SUPPLY -->|"Mirror"| FAB
-  FAB --> PBI["**Power BI**<br/>Supply Chain Dashboard"]
-  FAB --> ML["**Data Science**<br/>Predictive Maintenance"]
+  FAB --> PBI
+  FAB --> ML
+  style h1 fill:#e6f3ff,stroke:#0078d4
+  style h2 fill:#e6f3ff,stroke:#0078d4
 ```
 
 **Business outcomes:**

@@ -91,10 +91,31 @@ For the customer, this means:
 
 - **One data platform** — No more separate data warehouses, ETL pipelines,
   or analytics silos per application
+- **Trusted data products** — Mirrored and shortcutted data becomes
+  reusable, governed [data products](https://learn.microsoft.com/azure/cloud-adoption-framework/data/executive-strategy-unify-data-platform#key-terms)
+  consumed across the organization for analytics and AI
 - **AI-ready by default** — Data in OneLake is immediately available for
   machine learning, Copilot integrations, and advanced analytics
+- **Governed by design** — [Microsoft Purview](https://learn.microsoft.com/azure/cloud-adoption-framework/data/governance-security-baselines-purview-data-estate-unify-data-platform)
+  provides unified data governance, classification, and policy enforcement
+  across the entire data estate — OneLake, Azure, on-premises, and
+  third-party sources
 - **Incremental value** — H1 workloads contribute data to Fabric today;
   as they evolve to H2, the data gets richer — but the platform is already
   in place
+
+:::note[Shortcuts complement mirroring]
+For non-SQL data sources — Azure Data Lake Storage, Amazon S3, Dataverse,
+and others — Fabric **shortcuts** provide zero-copy, virtualized access to
+data without replicating it. Combined with mirroring for SQL sources, this
+covers the full data estate.
+:::
+
+:::tip[CAF guidance for unified data platforms]
+Microsoft's Cloud Adoption Framework outlines a [four-step framework](https://learn.microsoft.com/azure/cloud-adoption-framework/data/executive-strategy-unify-data-platform#how-do-you-unify-your-data-platform)
+for unifying your data platform: Organizational readiness → Architecture
+→ Governance and security baselines → Operational standards. Use this as
+a reference when building out the customer's Fabric practice.
+:::
 
 [← Back to H2 Modernize](/dc2fabric/horizons/h2-modernize/) · [Continue to Execution →](/dc2fabric/execution/)
