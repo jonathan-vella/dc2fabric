@@ -69,15 +69,15 @@ migration? Is the modernization path roadmap approved by the customer?
 
 **Focus:** Execute the migration and build customer capability.
 
-| Activity                                 | Outcome                                        |
-| ---------------------------------------- | ---------------------------------------------- |
-| Stabilize: VM migration waves            | Workloads running on Azure VMs                 |
-| Stabilize: SQL MI migration              | Databases on SQL Managed Instance              |
-| Transform: .NET upgrade and containers   | Apps on Azure Container Apps                   |
-| Transform: Azure SQL DB migration        | Databases on Azure SQL Database                |
-| Fabric mirroring configuration           | Operational data flowing to OneLake            |
-| Cutover and rollback approval            | Business-approved production moves             |
-| Post-cutover validation                  | Functional, performance, and security sign-off |
+| Activity                               | Outcome                                        |
+| -------------------------------------- | ---------------------------------------------- |
+| Stabilize: VM migration waves          | Workloads running on Azure VMs                 |
+| Stabilize: SQL MI migration            | Databases on SQL Managed Instance              |
+| Transform: .NET upgrade and containers | Apps on Azure Container Apps                   |
+| Transform: Azure SQL DB migration      | Databases on Azure SQL Database                |
+| Fabric mirroring configuration         | Operational data flowing to OneLake            |
+| Cutover and rollback approval          | Business-approved production moves             |
+| Post-cutover validation                | Functional, performance, and security sign-off |
 
 **Decision gate:** Are all workloads validated and performing as expected
 in Azure? Is the on-premises environment ready for decommission?
@@ -97,13 +97,13 @@ in Azure? Is the on-premises environment ready for decommission?
 
 **Focus:** Continuously improve and expand the Azure and Fabric estate.
 
-| Activity                         | Outcome                                          |
-| -------------------------------- | ------------------------------------------------ |
-| Ongoing cost optimization        | Azure Advisor reviews, reservation adjustments   |
-| Operational maturity advancement | Proactive monitoring, automated remediation      |
-| Fabric workload expansion        | New data sources, new dashboards, AI/ML models   |
-| Stabilize → Transform assessment | Periodic review of Stabilize workloads           |
-| Continuous improvement planning  | Roadmap for next engagement cycle                |
+| Activity                         | Outcome                                        |
+| -------------------------------- | ---------------------------------------------- |
+| Ongoing cost optimization        | Azure Advisor reviews, reservation adjustments |
+| Operational maturity advancement | Proactive monitoring, automated remediation    |
+| Fabric workload expansion        | New data sources, new dashboards, AI/ML models |
+| Stabilize → Transform assessment | Periodic review of Stabilize workloads         |
+| Continuous improvement planning  | Roadmap for next engagement cycle              |
 
 ## Modernization Paths Across MCEM
 

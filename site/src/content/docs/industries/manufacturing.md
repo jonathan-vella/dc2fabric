@@ -51,8 +51,8 @@ Azure Migrate reveals the estate:
 
 ## The Path Decision
 
-| Workload                         | Path      | Rationale                                               |
-| -------------------------------- | ------- | ------------------------------------------------------- |
+| Workload                         | Path          | Rationale                                               |
+| -------------------------------- | ------------- | ------------------------------------------------------- |
 | ERP system (core manufacturing)  | **Stabilize** | Business-critical, stable, no appetite for code changes |
 | MES (shop floor execution)       | **Stabilize** | Tightly coupled to ERP, move together                   |
 | Customer portal (order tracking) | **Transform** | Customer-facing, needs elastic scale for peak ordering  |

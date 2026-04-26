@@ -18,12 +18,12 @@ belong in Stabilize, Transform, or a phased Stabilize-to-Transform path.
 
 ## How to Use These Stories
 
-| Use case                       | How the stories help                                               |
-| ------------------------------ | ------------------------------------------------------------------ |
-| **Account planning**           | Identify likely triggers, stakeholders, workloads, and objections  |
-| **Customer workshops**         | Show how strategy drives path decisions before tools are chosen    |
-| **Solution framing**           | Connect Azure migration, modernization, and Fabric data products   |
-| **Partner delivery alignment** | Keep discovery, execution, and governance language consistent      |
+| Use case                       | How the stories help                                              |
+| ------------------------------ | ----------------------------------------------------------------- |
+| **Account planning**           | Identify likely triggers, stakeholders, workloads, and objections |
+| **Customer workshops**         | Show how strategy drives path decisions before tools are chosen   |
+| **Solution framing**           | Connect Azure migration, modernization, and Fabric data products  |
+| **Partner delivery alignment** | Keep discovery, execution, and governance language consistent     |
 
 :::note[Illustrative, not benchmark data]
 The industry stories are fictional scenarios. Use Azure Migrate business cases,

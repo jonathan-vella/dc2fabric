@@ -52,8 +52,8 @@ Azure Migrate reveals the estate:
 
 ## The Path Decision
 
-| Workload                       | Path      | Rationale                                                |
-| ------------------------------ | ------- | -------------------------------------------------------- |
+| Workload                       | Path          | Rationale                                                |
+| ------------------------------ | ------------- | -------------------------------------------------------- |
 | Core banking systems           | **Stabilize** | Stability is paramount, minimal-downtime cutover needed  |
 | Regulatory reporting databases | **Stabilize** | Data sovereignty requirements met by SQL MI in-region    |
 | Digital banking app            | **Transform** | Customer-facing, needs elastic scale and rapid iteration |

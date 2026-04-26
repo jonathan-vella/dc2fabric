@@ -322,7 +322,11 @@ th {
   }
 
   .mcem-journey > .mcem-connector:last-of-type {
-    background: linear-gradient(180deg, #0078d4 0%, var(--dc2-color-fabric) 100%);
+    background: linear-gradient(
+      180deg,
+      #0078d4 0%,
+      var(--dc2-color-fabric) 100%
+    );
   }
 
   .mcem-journey > .mcem-connector:last-of-type::after {
