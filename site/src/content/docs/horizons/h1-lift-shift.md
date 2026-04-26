@@ -7,8 +7,10 @@ sidebar:
 
 :::tip[TL;DR]
 Horizon 1 migrates VMs to Azure and databases to SQL Managed Instance in
-**4–8 weeks** with near-zero application risk. Right-sizing and reserved
-instances typically deliver 30–40% infrastructure cost savings immediately.
+**4–8 weeks** for many small-to-mid estates, with low application-change risk.
+Right-sizing, reservations, and managed database operations can improve cost
+and resilience, but quantified savings should come from Azure Migrate and TCO
+analysis for the customer estate.
 :::
 
 Horizon 1 is about getting to Azure quickly and safely. The applications
@@ -20,12 +22,13 @@ underneath becomes modern, managed, and cost-optimized.
 | On-Premises           | Azure Target                 | Migration Tool                   |
 | --------------------- | ---------------------------- | -------------------------------- |
 | Windows Server VMs    | Azure Virtual Machines       | Azure Migrate                    |
-| SQL Server databases  | Azure SQL Managed Instance   | MI Link / Azure DMS                      |
+| SQL Server databases  | Azure SQL Managed Instance   | MI Link / Azure DMS              |
 | Network configuration | Azure Virtual Network + NSGs | Azure Migrate                    |
 
 ## The Architecture
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph TB
   classDef azure fill:#0078d4,stroke:#005a9e,color:#fff
   classDef db    fill:#038387,stroke:#025356,color:#fff
@@ -75,7 +78,7 @@ Horizon 1 delivers measurable value within weeks:
 - **Right-sizing**: VMs are provisioned to match actual utilization,
   not peak-plus-headroom estimates from five years ago
 - **Reserved instances**: Commit to 1-year or 3-year terms for
-  significant cost savings on predictable workloads
+  eligible, predictable workloads after sizing is validated
 - **Automated operations**: Patching, backups, and monitoring move
   from manual processes to managed services
 - **Decommission on-premises**: Reduce data center footprint and
@@ -92,6 +95,12 @@ Horizon 1 delivers measurable value within weeks:
 | **Cost model**       | CapEx, over-provisioned           | OpEx, right-sized                    |
 | **Analytics**        | Manual spreadsheet exports        | SQL MI Mirroring → Fabric            |
 | **Typical timeline** | —                                 | **4–8 weeks**                        |
+
+:::note[Quantify savings per customer]
+Use Azure Migrate business cases, Azure Migrate assessments, and the Azure TCO
+Calculator to quantify savings. Percentages vary by utilization, license
+position, SKU selection, region, reservations, and operational practices.
+:::
 
 :::tip[H1 is not a compromise]
 Lift and shift is sometimes dismissed as "just moving the problem to the

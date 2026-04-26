@@ -26,6 +26,7 @@ transformation.
 ## Two Horizons
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph TB
   classDef azure  fill:#0078d4,stroke:#005a9e,color:#fff
   classDef fabric fill:#742774,stroke:#5a1e5a,color:#fff
@@ -58,9 +59,9 @@ provides near-100% compatibility with on-premises SQL Server.
 
 - Fast time to value — weeks, not months
 - Minimal application risk — the code does not change
-- Immediate infrastructure cost savings (right-sizing, reserved instances)
+- Customer-specific cost optimization through right-sizing and reservations
 - If aligned with strategy: enable **SQL MI Mirroring to Fabric**
-  for near-real-time analytics without re-architecting anything
+  for near-real-time analytics without custom ETL for supported tables
 
 ### Horizon 2 — Modernize
 
@@ -74,7 +75,7 @@ and advanced security.
 
 - Elastic scale — handle traffic spikes without over-provisioning
 - CI/CD and DevOps-ready — containers enable modern deployment pipelines
-- Lower long-term TCO — PaaS services reduce operational overhead
+- Lower operational overhead where PaaS and serverless fit the workload
 - If aligned with strategy: enable **Azure SQL DB in Fabric**
   for a unified, AI-ready data platform
 
@@ -84,6 +85,7 @@ The Horizons model is not a rigid sequence. Strategy decides
 which pattern fits:
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph LR
   classDef h1     fill:#0078d4,stroke:#005a9e,color:#fff
   classDef h2     fill:#038387,stroke:#025356,color:#fff

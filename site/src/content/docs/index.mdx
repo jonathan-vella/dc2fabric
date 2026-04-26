@@ -59,13 +59,14 @@ import { CardGrid, Card, LinkCard } from "@astrojs/starlight/components";
     **H1** — Lift & Shift in weeks. **H2** — Modernize over months. Strategy
     decides which path each workload takes.
   </Card>
-  <Card title="Typical 30–60% Savings" icon="approve-check-circle">
-    Right-sizing, reserved instances, and PaaS services deliver measurable
-    savings. Use the [Azure TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) for your estimate.
+  <Card title="Customer-Specific TCO" icon="approve-check-circle">
+    Right-sizing, reservations, and PaaS choices can improve cost outcomes.
+    Use Azure Migrate business cases and the [Azure TCO Calculator][azure-tco]
+    for quantified estimates.
   </Card>
-  <Card title="Zero-ETL Analytics" icon="rocket">
-    SQL MI and Azure SQL DB mirror data to Fabric in near-real-time — no
-    pipelines to build or maintain.
+  <Card title="Mirrored Analytics" icon="rocket">
+    SQL MI and Azure SQL DB can mirror supported operational data to Fabric
+    in near-real time without custom ETL pipelines for those tables.
   </Card>
   <Card title="5 MCEM Stages" icon="open-book">
     Define the Strategy → Discover & Design → Migrate & Modernize →
@@ -112,17 +113,18 @@ import { CardGrid, Card, LinkCard } from "@astrojs/starlight/components";
 
 Every organization's path from datacenter to cloud is unique — but the
 pattern is universal. Explore how three different industries navigate
-the same modernization journey.
+the same modernization journey, then use the partner guide to frame account
+planning and customer conversations.
 
 <CardGrid>
   <Card title="Manufacturing" icon="setting">
-    **Contoso Industries** — 127 VMs, real-time supply chain visibility,
+    **Contoso Industries** — 127 VMs, near-real-time supply chain visibility,
     predictive maintenance via Fabric. [Read the story
     →](/dc2fabric/industries/manufacturing/)
   </Card>
   <Card title="Financial Services" icon="approve-check-circle">
-    **Woodgrove Bank** — 340 VMs, regulatory compliance, real-time fraud
-    detection via Fabric. [Read the story
+    **Woodgrove Bank** — 340 VMs, governed reporting, fraud monitoring, and
+    unified customer analytics via Fabric. [Read the story
     →](/dc2fabric/industries/financial-services/)
   </Card>
   <Card title="Retail" icon="open-book">
@@ -136,3 +138,5 @@ Delivering this journey to your customers? The
 [Partner Guide](/dc2fabric/industries/partner-guide/) has conversation
 starters, objection handling, and industry quick-reference cards.
 :::
+
+[azure-tco]: https://azure.microsoft.com/pricing/tco/calculator/

@@ -27,6 +27,7 @@ an IT team that keeps it all running through deep institutional knowledge.
 It works. But the business is outgrowing it.
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph TB
   classDef onprem fill:#f3f2f1,stroke:#605e5c,color:#201f1e
   subgraph dc["On-Premises Data Center"]
@@ -51,10 +52,16 @@ a technology refresh cycle.
 ## Cloud Adoption Framework — Strategy and Plan
 
 The Microsoft [Cloud Adoption Framework](https://learn.microsoft.com/azure/cloud-adoption-framework/)
-(CAF) spans the full cloud lifecycle — Strategy, Plan, Ready, Migrate,
-Modernize, Cloud-native, Govern, Secure, and Manage. In the dc2fabric
-journey we start with **Strategy** and **Plan**; the remaining phases
-(Ready, Govern, Secure, Manage) apply throughout execution and operations.
+(CAF) organizes cloud adoption into seven core methodologies: **Strategy**,
+**Plan**, **Ready**, **Adopt**, **Govern**, **Secure**, and **Manage**. CAF
+also integrates with the Azure Well-Architected Framework and Azure
+Architecture Center, so strategy decisions can flow into architecture,
+governance, security, and operations guidance.
+
+In the dc2fabric journey we begin with **Strategy** and **Plan**. **Ready**
+prepares landing zones and operating foundations. **Adopt** covers migration,
+modernization, and cloud-native build paths. **Govern**, **Secure**, and
+**Manage** remain active throughout execution and ongoing operations.
 
 In the **Strategy phase**, we help the customer articulate:
 

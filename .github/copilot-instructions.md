@@ -1,29 +1,41 @@
-# APEX - Copilot Instructions
+# dc2fabric - Copilot Instructions
 
-> VS Code Copilot-specific orchestration instructions.
-> For general project conventions, build commands, and code style, see the root `AGENTS.md`.
+> VS Code Copilot-specific orchestration guidance.
+> For project conventions, build commands, Azure defaults, and validation commands, see the root `AGENTS.md`.
+
+## Operating Context
+
+dc2fabric is the external modernization journey from datacenter platforms to Azure and Microsoft Fabric. APEX is the
+agentic platform engineering engine that turns that journey into governed infrastructure artifacts and deployable IaC.
+
+- Use `site/src/content/docs/` for business-domain context: CAF, MCEM, Horizons, migration execution, Fabric outcomes,
+  and industry examples.
+- Use `AGENTS.md`, `.github/skills/`, `.github/instructions/`, and the workflow graph for technical conventions.
+- Treat `.github/copilot-instructions.md` as repo-owned in this branch. The former weekly upstream-sync workflow has
+  been deleted and must not be described as active.
 
 ## Quick Start
 
-1. Open Chat (`Ctrl+Shift+I`) → Select **Orchestrator** → Describe your project
-2. The Orchestrator guides you through all steps with approval gates
+1. Open Chat with `Ctrl+Shift+I`.
+2. Select `01-Orchestrator` for the standard workflow, or `01-Orchestrator (Fast Path)` for simple Azure projects.
+3. Describe the datacenter-to-Azure or Fabric modernization project.
+4. Let the Orchestrator guide requirements, approvals, planning, IaC generation, deployment, and documentation.
 
-Subagent support is pre-configured in `.vscode/settings.json`.
+Subagent support is configured in `.vscode/settings.json`.
 
-## Session State — apex-recall
+## Session State with apex-recall
 
-All session state is managed through `apex-recall`. Do not read or write
-`00-session-state.json` directly.
+All workflow session state is managed through `apex-recall`. Do not read or write `00-session-state.json` directly.
 
 ```bash
-# On start/resume
-apex-recall show <project> --json       # full context: step, decisions, findings, artifacts
+# On start or resume
+apex-recall show <project> --json
 
 # During work
-apex-recall checkpoint <project> <step> <phase> --json   # after each phase
-apex-recall decide <project> --key <k> --value <v> --json # record decisions
-apex-recall decide <project> --decision "<text>" --rationale "<why>" --json # decision log
-apex-recall finding <project> --add "<text>" --json       # add findings
+apex-recall checkpoint <project> <step> <phase> --json
+apex-recall decide <project> --key <k> --value <v> --json
+apex-recall decide <project> --decision "<text>" --rationale "<why>" --json
+apex-recall finding <project> --add "<text>" --json
 
 # On completion
 apex-recall complete-step <project> <step> --json
@@ -35,64 +47,74 @@ apex-recall init <project> --json
 apex-recall review-audit <project> <step> ... --json
 ```
 
-If `apex-recall` returns useful context, skip redundant file reads.
-If it returns empty results or errors, continue normally — it is a convenience, not a blocker.
+If `apex-recall` returns useful context, use it to avoid redundant file reads. If it returns empty results or errors,
+continue normally; it is a convenience, not a blocker.
 
-Orientation (read-only): `apex-recall sessions`, `files`, `search '<term>'`, `decisions` — all accept `--json`.
+Useful read-only orientation commands include `apex-recall sessions`, `apex-recall files`,
+`apex-recall search '<term>'`, and `apex-recall decisions`. Use `--json` when available.
 
-## Multi-Step Workflow
+## Workflow Routing
 
-| Step | Agent                                                                      | Output                                                                                       | Review                           | Gate       |
-| ---- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------- | ---------- |
-| 1    | Requirements                                                               | `01-requirements.md`                                                                         | 1×                               | Approval   |
-| 2    | Architect                                                                  | `02-architecture-assessment.md` + cost estimate                                              | 1× + 1 cost (opt-in: multi-pass) | Approval   |
-| 3    | Design (opt)                                                               | `03-des-*.{py,png,md}` diagrams and ADRs                                                     | —                                | —          |
-| 3.5  | Governance (`04g-Governance`)                                              | `04-governance-constraints.md/.json`                                                         | 1×                               | Approval   |
-| 4    | IaC Plan (`05-IaC Planner`)                                                | `04-implementation-plan.md` + `04-dependency-diagram.py/.png` + `04-runtime-diagram.py/.png` | opt-in (default: skip)           | Approval   |
-| 5    | IaC Code (Bicep: `06b-Bicep CodeGen` / Terraform: `06t-Terraform CodeGen`) | `infra/bicep/{project}/` or `infra/terraform/{project}/`                                     | opt-in (default: skip)           | Validation |
-| 6    | Deploy (Bicep: `07b-Bicep Deploy` / Terraform: `07t-Terraform Deploy`)     | `06-deployment-summary.md`                                                                   | —                                | Approval   |
-| 7    | As-Built                                                                   | `07-*.md` documentation suite                                                                | —                                | —          |
-| Post | Lessons (Orchestrator)                                                     | `09-lessons-learned.json/.md`                                                                | —                                | —          |
+The machine-readable workflow source is `.github/skills/workflow-engine/templates/workflow-graph.json`. Use it for phase
+order, gates, optional design paths, outputs, and Bicep or Terraform routing.
 
-All outputs → `agent-output/{project}/`. Context flows via artifact files + handoffs.
-Programmatic source of truth: `.github/skills/workflow-engine/templates/workflow-graph.json`.
-Review = adversarial passes by challenger subagents; 1-pass default, multi-pass opt-in for complex projects.
-Reviews target AI-generated creative decisions only (Steps 1, 2, 3.5, 4, 5).
+High-level flow:
 
-## Skills
+- Requirements capture business goals, constraints, workload details, and the `iac_tool` decision.
+- Architecture maps the solution to Azure Well-Architected Framework pillars and cost expectations.
+- Design can add diagrams and ADRs when visual or formal decision artifacts are useful.
+- Governance discovers subscription policy constraints before implementation planning.
+- IaC planning creates the implementation plan and diagrams.
+- Code generation routes to Bicep or Terraform based on the recorded requirement decision.
+- Deployment agents preview and execute the selected IaC track with approval gates.
+- As-built documentation captures the deployed workload and operational handoff.
 
-Skills are auto-discovered via the `description` field in each `.github/skills/{name}/SKILL.md`.
-Agents load skills by reading the SKILL.md file directly.
-At >60% context, agents load `SKILL.digest.md` (compact); at >80% they load
-`SKILL.minimal.md`. See the `context-shredding` skill for tier selection.
+All generated workflow artifacts belong under `agent-output/{project}/`. Bicep output goes under
+`infra/bicep/{project}/`; Terraform output goes under `infra/terraform/{project}/`.
 
-## Chat Triggers
+## Skills and Subagents
+
+Skills are auto-discovered by the `description` field in `.github/skills/{name}/SKILL.md`. When a skill applies, load
+the relevant `SKILL.md` directly before acting.
+
+At higher context pressure, prefer the skill digest or minimal variant when present:
+
+- Above moderate context use: `SKILL.digest.md`
+- Near the context limit: `SKILL.minimal.md`
+
+Use the Explore subagent for read-only codebase research and specify thoroughness explicitly.
+
+| Lookup Type                           | Thoroughness | Examples                                             |
+| ------------------------------------- | ------------ | ---------------------------------------------------- |
+| Single file read or config check      | `quick`      | Find an `azure.yaml` path or inspect one config file |
+| Multi-file comparison or pattern scan | `medium`     | Compare how agents reference skills                  |
+| Deep codebase research                | `thorough`   | Audit security patterns or dependency structure      |
+
+Before calling Explore, check whether the information is already present from earlier file reads.
+
+## GitHub Operations
 
 - If a user message starts with `gh`, treat it as a GitHub operation.
-  Examples: `gh pr create ...`, `gh workflow run ...`, `gh api ...`.
-- Automatically follow the `github-operations` skill guidance (MCP-first, `gh` CLI fallback) from `.github/skills/github-operations/SKILL.md`.
+- For issues and pull requests, prefer GitHub MCP tools over the `gh` CLI.
+- Use `gh` only when there is no equivalent MCP write tool in the current environment.
+- In dev containers, do not run `gh auth` commands unless the user asks for CLI authentication troubleshooting.
+- `GH_TOKEN` is set through VS Code user settings. Shell exports do not propagate reliably.
 
-### GitHub MCP Priority (Mandatory)
+## Validation
 
-- For issues and pull requests, always prefer GitHub MCP tools over `gh` CLI.
-- Only use `gh` for operations that have no equivalent MCP write tool in the current environment.
-- In devcontainers, do not run `gh auth` commands unless the user explicitly asks for CLI authentication troubleshooting.
-- `GH_TOKEN` is set via VS Code User Settings (`terminal.integrated.env.linux`) — shell exports do not propagate reliably.
+Use focused validation first, then broaden as needed. Common checks for guidance and documentation changes are:
 
-### Explore Subagent Thoroughness
+```bash
+npm run lint:md
+npm run validate:instruction-checks
+npm run validate:terminology
+npm run lint:deprecated-refs
+npm run lint:workflow-table-sync
+npm run lint:docs-freshness
+npm run validate:no-hardcoded-counts
+npm run lint:links
+npm run lint:orphaned-content
+npm run validate:agent-registry
+```
 
-When invoking the Explore subagent, always specify thoroughness explicitly:
-
-| Lookup Type                           | Thoroughness | Examples                                                  |
-| ------------------------------------- | ------------ | --------------------------------------------------------- |
-| Single file read, config check        | `quick`      | "What's in azure.yaml?", "Find the main.bicep path"       |
-| Multi-file comparison, pattern search | `medium`     | "How do agents reference skills?", "What modules exist?"  |
-| Deep codebase research                | `thorough`   | "Audit all security patterns", "Full dependency analysis" |
-
-Before calling Explore, check whether the needed information is already in context
-from files read earlier in the session.
-
-## Conventions, Key Files & Validation
-
-See `AGENTS.md` for all conventions, project structure, key file paths,
-and build/validation commands.
+For full project validation before a PR, run `npm run validate:all`.

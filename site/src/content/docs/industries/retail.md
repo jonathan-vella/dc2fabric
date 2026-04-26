@@ -78,6 +78,7 @@ Azure Migrate reveals the estate:
 ## The Payoff
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph TB
   classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
   classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
@@ -107,13 +108,13 @@ graph TB
 
 **Business outcomes:**
 
-- Zero downtime during peak season — Azure Container Apps autoscaling
-  handled a 15x traffic spike during the holiday sale with no
-  degradation
+- Peak-season resilience — Azure Container Apps autoscaling is tested against
+  holiday traffic scenarios with rollback and performance thresholds agreed in
+  advance
 - Customer 360 view for the first time — in-store, online, and loyalty
   data unified in Fabric, powering personalized marketing and a
   recommendation engine
 - Deployment cycle reduced from 6 weeks to same-day — the e-commerce
   team ships features weekly, matching competitor pace
-- Real-time inventory visibility across stores and warehouse — reducing
-  stockouts by 40% and enabling accurate online availability display
+- Near-real-time inventory visibility across stores and warehouse — enabling
+  stockout reduction targets and more accurate online availability display

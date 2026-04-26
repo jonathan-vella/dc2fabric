@@ -8,8 +8,8 @@ sidebar:
 :::tip[TL;DR]
 Horizon 2 containerizes .NET apps and migrates databases to Azure SQL Database
 over **3–6 months**. The result: elastic autoscaling, CI/CD pipelines, and
-40–60% cost reduction through serverless PaaS — at the cost of deeper
-application changes.
+lower operational overhead where PaaS and serverless fit the workload — at the
+cost of deeper application and operating-model changes.
 :::
 
 Horizon 2 is a deeper transformation. Applications are re-architected for
@@ -29,6 +29,7 @@ business needs it to.
 ## The Architecture
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph TB
   classDef azure  fill:#0078d4,stroke:#005a9e,color:#fff
   classDef db     fill:#038387,stroke:#025356,color:#fff
@@ -90,6 +91,13 @@ Azure SQL Database is designed for cloud-native workloads:
 - **Elastic pools** — Share resources across multiple databases for
   cost efficiency
 - **Hyperscale tier** — Scale to 128 TB with near-instant backups
+
+:::note[Validate the economic model]
+Serverless, elastic pools, and PaaS management can reduce waste and operations
+effort, but savings are not automatic. Use Azure Migrate assessments, the
+Azure TCO Calculator, and proof-of-concept telemetry to validate the target
+SKU, scaling rules, and reservation strategy.
+:::
 
 ## Before and After
 

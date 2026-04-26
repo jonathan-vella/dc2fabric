@@ -19,6 +19,7 @@ the previous one, with clear activities, outcomes, and decision points.
 ## The Full Journey
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph LR
   classDef stage  fill:#0078d4,stroke:#005a9e,color:#fff
   classDef finish fill:#742774,stroke:#5a1e5a,color:#fff
@@ -59,7 +60,7 @@ strategic priorities? If yes, proceed to assessment.
 | Horizons classification workshop       | Workloads assigned to H1 or H2                 |
 | Architecture design per horizon        | Target architecture diagrams                   |
 | Fabric integration planning            | Data mirroring strategy                        |
-| Migration wave planning                | Phased execution roadmap                       |
+| Migration wave planning                | Dependency-based phased execution roadmap      |
 
 **Decision gate:** Does the assessment confirm the estate is suitable for
 migration? Is the horizons roadmap approved by the customer?
@@ -75,6 +76,8 @@ migration? Is the horizons roadmap approved by the customer?
 | H2: .NET upgrade and containerization    | Apps on Azure Container Apps        |
 | H2: Azure SQL DB migration               | Databases on Azure SQL Database     |
 | Fabric mirroring configuration           | Operational data flowing to OneLake |
+| Cutover and rollback approval            | Business-approved production moves  |
+| Post-cutover validation                  | Functional, performance, and security sign-off |
 
 **Decision gate:** Are all workloads validated and performing as expected
 in Azure? Is the on-premises environment ready for decommission?
@@ -107,6 +110,7 @@ in Azure? Is the on-premises environment ready for decommission?
 The following shows when each horizon activates across the MCEM stages:
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 gantt
   title Horizons Across MCEM Stages
   dateFormat YYYY-MM
@@ -132,5 +136,6 @@ gantt
 :::note[Every organization's timeline is different]
 The Gantt chart above is illustrative. A small estate might complete in
 3 months. A large enterprise might take 12-18 months. The structure is
-the same — the timeline scales with the estate size and complexity.
+the same — the timeline scales with estate size, dependency complexity,
+governance requirements, and customer readiness.
 :::

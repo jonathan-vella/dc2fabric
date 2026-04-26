@@ -45,8 +45,8 @@ Use this decision tree to match workloads to the right horizon:
 | **Application complexity**    | Works well as-is                  | Needs refactoring or new capabilities   |
 | **Risk tolerance**            | Low — minimize disruption         | Moderate — willing to invest in change  |
 | **Time to value**             | Weeks                             | Months                                  |
-| **Cost savings**              | ~30–40% typical (right-sizing + RI) | ~40–60% typical (PaaS + serverless)   |
-| **Fabric integration**        | SQL MI Mirroring (zero-ETL)       | Azure SQL DB Mirroring (richer data)    |
+| **Cost model**                | Azure Migrate and TCO estimate    | PaaS/serverless model validated by data |
+| **Fabric integration**        | SQL MI Mirroring for supported data | SQL DB Mirroring plus data products    |
 | **Best for**                  | ERP, back-office, stable LOB apps | Customer-facing, e-commerce, new builds |
 
 ## Fabric Value Proposition — By Audience
@@ -55,25 +55,31 @@ Tailor the Fabric message to the stakeholder:
 
 ### For the CTO / CIO
 
-> "Fabric eliminates the need to build and maintain separate ETL pipelines
-> and data warehouses. Operational data from both migration horizons flows
-> into a single platform — OneLake — ready for BI, ML, and AI. You build
-> one analytics platform, not two."
+> "Fabric can reduce the need for separate ETL pipelines and duplicated
+> analytical stores. Supported operational data from both migration horizons
+> can land in OneLake and be governed for BI, ML, and AI workloads."
 
 ### For the CFO
 
 > "Traditional analytics infrastructure requires separate investments in
 > ETL tooling, data warehouses, and BI platforms. Fabric consolidates
-> these into a single capacity-based model. Combined with H1 and H2
-> migration savings (30–60%), the total cost of ownership drops
-> significantly."
+> these into a single capacity-based model. Combine Azure Migrate business
+> cases, the Azure TCO Calculator, and Fabric capacity planning to quantify
+> the customer's actual total cost of ownership."
 
 ### For the Line-of-Business Leader
 
-> "Your team gets real-time dashboards and AI-powered insights on
-> operational data — without waiting months for the data team to build
-> custom pipelines. If the data exists in SQL MI or Azure SQL DB, it
-> can be in Fabric within minutes."
+> "Your team gets near-real-time dashboards and AI-powered insights on
+> supported operational data — without building custom ETL for mirrored
+> tables. If the data exists in SQL MI or Azure SQL DB and meets mirroring
+> prerequisites, it can become a governed Fabric data product."
+
+### For the CISO / Data Governance Lead
+
+> "Mirroring does not automatically copy SQL row-level security, object
+> permissions, dynamic data masking, or Purview sensitivity labels into
+> OneLake. The engagement includes a Fabric governance baseline so access,
+> labels, ownership, and review processes are rebuilt before broad use."
 
 ## Objection Handling
 
@@ -82,14 +88,29 @@ Tailor the Fabric message to the stakeholder:
 | "We are not ready for a full cloud migration."    | The Horizons model is designed for exactly this — start with H1 for quick wins and low risk, evolve to H2 only where the business case justifies it.                                                                               |
 | "We already have a data warehouse."               | Fabric does not replace an existing warehouse overnight. SQL MI Mirroring runs alongside your current setup. Start with one workload, prove the value, then expand.                                                                |
 | "Kubernetes is too complex for our team."         | Azure Container Apps abstracts away Kubernetes. Your developers deploy containers without managing clusters, nodes, or networking.                                                                                                 |
-| "We cannot afford downtime for migration."        | The Managed Instance link supports online migration to SQL MI with near-zero downtime. Azure DMS is available as a fallback. VM migration uses replication with planned cutover windows.                                                                         |
+| "We cannot afford downtime for migration."        | The Managed Instance link uses near-real-time replication to SQL MI and limits downtime to final cutover. Azure DMS is available as a fallback. VM migration uses replication with planned cutover windows and rollback criteria. |
 | "How is this different from just using Power BI?" | Power BI is the visualization layer. Fabric includes the data lake (OneLake), data engineering (Spark), data science (ML), and real-time intelligence — all on one platform. Power BI becomes more powerful when backed by Fabric. |
+
+## Fabric Readiness Checklist
+
+Before positioning Fabric mirroring as an execution milestone, validate:
+
+- Source database permissions needed for mirroring are approved and least
+  privilege is documented
+- Row-level security, object permissions, dynamic data masking, and sensitivity
+  labels that must exist in Fabric are designed explicitly
+- Private SQL MI connectivity uses a virtual network data gateway or
+  on-premises data gateway with access to the private endpoint
+- Unsupported table, column, feature, identity, and tenant scenarios are known
+  before timeline commitments are made
+- Data-product ownership, endorsement, lineage, access reviews, and support
+  paths are assigned
 
 ## Industry Quick Cards
 
 ### Manufacturing (Contoso Industries)
 
-- **Trigger**: Board-level mandate for real-time supply chain visibility
+- **Trigger**: Board-level mandate for near-real-time supply chain visibility
 - **H1 workloads**: ERP, MES (127 VMs, 22 databases)
 - **H2 workloads**: Customer portal, supply chain dashboard
 - **Fabric payoff**: Predictive maintenance + supply chain Power BI dashboard
@@ -100,7 +121,7 @@ Tailor the Fabric message to the stakeholder:
 - **Trigger**: Regulatory requirement for near-real-time transaction monitoring
 - **H1 workloads**: Core banking, regulatory databases (340 VMs, 45 databases)
 - **H2 workloads**: Digital banking app, fraud detection engine
-- **Fabric payoff**: Regulatory dashboards + real-time fraud detection ML models
+- **Fabric payoff**: Regulatory dashboards + fraud analytics and monitoring
 - [Full story →](/dc2fabric/industries/financial-services/)
 
 ### Retail (Northwind Traders)
