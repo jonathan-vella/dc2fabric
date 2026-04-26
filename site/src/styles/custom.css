@@ -199,6 +199,10 @@ th {
   padding: 1.35rem;
 }
 
+.path-grid .path-card {
+  margin-top: 0;
+}
+
 .path-card--stabilize {
   border-top: 4px solid var(--sl-color-accent);
 }
