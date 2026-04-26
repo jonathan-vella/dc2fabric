@@ -7,8 +7,8 @@ sidebar:
 
 :::tip[TL;DR]
 Contoso Industries: 127 VMs, 22 SQL databases, 14 .NET apps. ERP and MES
-go H1 (months 1–4); customer portal and supply chain dashboard go H2
-(months 3–8). Fabric supports a near-real-time supply chain dashboard.
+follow Stabilize (months 1–4); customer portal and supply chain dashboard
+follow Transform (months 3–8). Fabric supports a near-real-time supply chain dashboard.
 :::
 
 **Contoso Industries** is a mid-sized manufacturer with 15 production
@@ -49,24 +49,24 @@ Azure Migrate reveals the estate:
 | .NET applications    | 14    | 10 are .NET Framework 4.x, 4 are already .NET 6+      |
 | SQL Server databases | 22    | 18 compatible with SQL MI, 4 need feature remediation |
 
-## The Horizons Decision
+## The Path Decision
 
-| Workload                         | Horizon | Rationale                                               |
+| Workload                         | Path      | Rationale                                               |
 | -------------------------------- | ------- | ------------------------------------------------------- |
-| ERP system (core manufacturing)  | **H1**  | Business-critical, stable, no appetite for code changes |
-| MES (shop floor execution)       | **H1**  | Tightly coupled to ERP, move together                   |
-| Customer portal (order tracking) | **H2**  | Customer-facing, needs elastic scale for peak ordering  |
-| Supply chain dashboard           | **H2**  | New development — build cloud-native from day one       |
+| ERP system (core manufacturing)  | **Stabilize** | Business-critical, stable, no appetite for code changes |
+| MES (shop floor execution)       | **Stabilize** | Tightly coupled to ERP, move together                   |
+| Customer portal (order tracking) | **Transform** | Customer-facing, needs elastic scale for peak ordering  |
+| Supply chain dashboard           | **Transform** | New development — build cloud-native from day one       |
 
 ## Execution
 
-**Horizon 1** (Months 1-4):
+**Stabilize** (Months 1-4):
 
 - Migrate 85 VMs to Azure in 4 waves
 - Migrate ERP and MES databases to SQL Managed Instance
 - Enable SQL MI Mirroring to Fabric for production data
 
-**Horizon 2** (Months 3-8):
+**Transform** (Months 3-8):
 
 - Modernize customer portal: .NET Framework → .NET 8, containerize
 - Build new supply chain dashboard as a cloud-native application
@@ -80,11 +80,11 @@ graph TB
   classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
   classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
   classDef bi      fill:#fde8f9,stroke:#742774,color:#3a003a
-  subgraph h1["Horizon 1"]
+  subgraph h1["Stabilize"]
     ERP[("ERP → SQL MI")]:::azure
     MES[("MES → SQL MI")]:::azure
   end
-  subgraph h2["Horizon 2"]
+  subgraph h2["Transform"]
     PORTAL[("Customer Portal → Azure SQL DB")]:::azure
     SUPPLY[("Supply Chain App → Azure SQL DB")]:::azure
   end

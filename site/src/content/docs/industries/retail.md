@@ -7,8 +7,8 @@ sidebar:
 
 :::tip[TL;DR]
 Northwind Traders: 65 VMs, 12 SQL databases, 8 .NET apps. ERP and
-loyalty go H1 (months 1–3); e-commerce and customer analytics go H2
-(months 2–7). Fabric unifies the Customer 360 view across all channels.
+loyalty follow Stabilize (months 1–3); e-commerce and customer analytics
+follow Transform (months 2–7). Fabric unifies the Customer 360 view across all channels.
 :::
 
 **Northwind Traders** is a specialty food retailer with 80 stores and
@@ -49,24 +49,24 @@ Azure Migrate reveals the estate:
 | .NET applications    | 8     | 5 are .NET Framework (including e-commerce), 3 are .NET 6+ |
 | SQL Server databases | 12    | 10 compatible with SQL MI, 2 need feature review           |
 
-## The Horizons Decision
+## The Path Decision
 
-| Workload                     | Horizon | Rationale                                      |
+| Workload                     | Path      | Rationale                                      |
 | ---------------------------- | ------- | ---------------------------------------------- |
-| ERP and inventory management | **H1**  | Stable, back-office, moderate change frequency |
-| Loyalty program backend      | **H1**  | Works well, just needs better infrastructure   |
-| E-commerce platform          | **H2**  | Must scale elastically, needs rapid deployment |
-| Customer analytics service   | **H2**  | New build — designed cloud-native from scratch |
+| ERP and inventory management | **Stabilize** | Stable, back-office, moderate change frequency |
+| Loyalty program backend      | **Stabilize** | Works well, just needs better infrastructure   |
+| E-commerce platform          | **Transform** | Must scale elastically, needs rapid deployment |
+| Customer analytics service   | **Transform** | New build — designed cloud-native from scratch |
 
 ## Execution
 
-**Horizon 1** (Months 1-3):
+**Stabilize** (Months 1-3):
 
 - Migrate ERP and loyalty VMs to Azure
 - Migrate databases to SQL Managed Instance
 - Enable SQL MI Mirroring to Fabric for inventory and loyalty data
 
-**Horizon 2** (Months 2-7):
+**Transform** (Months 2-7):
 
 - Modernize e-commerce: .NET 8, containerize, deploy to Container Apps
   with autoscaling rules for traffic spikes
@@ -83,11 +83,11 @@ graph TB
   classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
   classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
   classDef bi      fill:#fde8f9,stroke:#742774,color:#3a003a
-  subgraph h1["Horizon 1"]
+  subgraph h1["Stabilize"]
     ERP[("ERP → SQL MI")]:::azure
     LOYALTY[("Loyalty → SQL MI")]:::azure
   end
-  subgraph h2["Horizon 2"]
+  subgraph h2["Transform"]
     ECOM[("E-commerce → Azure SQL DB")]:::azure
     CUST[("Customer Analytics → Azure SQL DB")]:::azure
   end

@@ -8,8 +8,8 @@ sidebar:
 :::tip[TL;DR]
 The dc2fabric journey maps to five MCEM stages — Define the Strategy,
 Discover & Design, Migrate & Modernize, Realize the Value, Optimize &
-Grow. H1 and H2 run in overlapping phases across Stages 2–4,
-with Fabric going live as mirroring is enabled. Stage 5 is ongoing.
+Grow. Stabilize and Transform paths can run in overlapping phases across
+Stages 2–4, with Fabric going live as mirroring is enabled. Stage 5 is ongoing.
 :::
 
 This page maps the entire dc2fabric journey across the five stages of the
@@ -57,13 +57,13 @@ strategic priorities? If yes, proceed to assessment.
 | Infrastructure readiness analysis      | Migration readiness scores per workload        |
 | Application compatibility analysis     | .NET version map and modernization complexity  |
 | Database compatibility analysis        | SQL feature usage and Azure SQL target mapping |
-| Horizons classification workshop       | Workloads assigned to H1 or H2                 |
-| Architecture design per horizon        | Target architecture diagrams                   |
+| Modernization path workshop            | Workloads assigned to Stabilize or Transform   |
+| Architecture design per path           | Target architecture diagrams                   |
 | Fabric integration planning            | Data mirroring strategy                        |
 | Migration wave planning                | Dependency-based phased execution roadmap      |
 
 **Decision gate:** Does the assessment confirm the estate is suitable for
-migration? Is the horizons roadmap approved by the customer?
+migration? Is the modernization path roadmap approved by the customer?
 
 ### Stage 3 — Empower and Achieve
 
@@ -71,10 +71,10 @@ migration? Is the horizons roadmap approved by the customer?
 
 | Activity                                 | Outcome                                        |
 | ---------------------------------------- | ---------------------------------------------- |
-| H1: VM migration waves via Azure Migrate | Workloads running on Azure VMs                 |
-| H1: SQL MI migration via MI Link / DMS   | Databases on SQL Managed Instance              |
-| H2: .NET upgrade and containerization    | Apps on Azure Container Apps                   |
-| H2: Azure SQL DB migration               | Databases on Azure SQL Database                |
+| Stabilize: VM migration waves            | Workloads running on Azure VMs                 |
+| Stabilize: SQL MI migration              | Databases on SQL Managed Instance              |
+| Transform: .NET upgrade and containers   | Apps on Azure Container Apps                   |
+| Transform: Azure SQL DB migration        | Databases on Azure SQL Database                |
 | Fabric mirroring configuration           | Operational data flowing to OneLake            |
 | Cutover and rollback approval            | Business-approved production moves             |
 | Post-cutover validation                  | Functional, performance, and security sign-off |
@@ -102,17 +102,17 @@ in Azure? Is the on-premises environment ready for decommission?
 | Ongoing cost optimization        | Azure Advisor reviews, reservation adjustments   |
 | Operational maturity advancement | Proactive monitoring, automated remediation      |
 | Fabric workload expansion        | New data sources, new dashboards, AI/ML models   |
-| H1 → H2 evolution assessment     | Periodic review of H1 workloads for H2 readiness |
+| Stabilize → Transform assessment | Periodic review of Stabilize workloads           |
 | Continuous improvement planning  | Roadmap for next engagement cycle                |
 
-## Horizons Across MCEM
+## Modernization Paths Across MCEM
 
-The following shows when each horizon activates across the MCEM stages:
+The following shows when each path activates across the MCEM stages:
 
 ```mermaid
 %%{init: {'theme':'neutral'}}%%
 gantt
-  title Horizons Across MCEM Stages
+  title Modernization Paths Across MCEM Stages
   dateFormat YYYY-MM
   axisFormat %b
   section MCEM Stages
@@ -121,11 +121,11 @@ gantt
     Migrate & Modernize     :s3, after s2, 4M
     Realize the Value       :s4, after s3, 1M
     Optimize & Grow         :s5, after s4, 2M
-  section Horizon 1
+  section Stabilize
     Assessment & planning :h1a, 2026-02, 2M
     Migration execution   :h1b, 2026-04, 2M
     Fabric mirroring      :h1c, 2026-06, 1M
-  section Horizon 2
+  section Transform
     Assessment & planning     :h2a, 2026-02, 2M
     Modernization execution   :h2b, 2026-04, 3M
     Fabric mirroring          :h2c, 2026-07, 1M

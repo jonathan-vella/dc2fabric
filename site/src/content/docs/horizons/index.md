@@ -1,121 +1,122 @@
 ---
-title: "The Horizons Model"
-description: "Designing a modernization roadmap with Horizon 1 (Lift & Shift) and Horizon 2 (Modernize) — MCEM Stage 2: Inspire and Design"
+title: "Two Modernization Paths"
+description: "Choose whether each workload should stabilize on Azure or transform into a modern cloud and Fabric platform."
 sidebar:
   order: 1
 ---
 
 :::tip[TL;DR]
-Not every workload needs the same treatment. Horizon 1 (Lift & Shift) gets
-workloads to Azure in weeks with minimal risk. Horizon 2 (Modernize) re-architects
-for cloud-native agility over months. Strategy decides which path each workload takes.
+Every workload needs a deliberate path. **Stabilize** moves priority workloads
+onto Azure with lower disruption. **Transform** modernizes applications, data
+platforms, analytics foundations, and AI readiness where the business case
+justifies deeper change.
 :::
 
-The assessment gave us the evidence. Now we design the roadmap.
-**Not every workload needs the same treatment.** The Horizons model
-provides a structured way to match each workload to the right level of
-modernization — based on business strategy, not technical ambition.
+The assessment gave us the evidence. The next decision is not whether to
+modernize everything at once. The decision is which path each workload should
+follow so the customer gets value without unnecessary risk.
 
-## MCEM Stage 2 — Inspire and Design (continued)
+The Horizons model remains the planning method behind these two public paths:
+Stabilize maps to Horizon 1, and Transform maps to Horizon 2.
 
-Horizons design is the second half of **MCEM Stage 2: Inspire and Design**.
-We take the assessment findings, overlay the customer's strategic priorities,
-and produce a concrete plan that balances quick wins with long-term
+## MCEM Stage 2 — Inspire and Design
+
+Modernization path design is the second half of **MCEM Stage 2: Inspire and
+Design**. We take assessment findings, overlay the customer's strategic
+priorities, and produce a concrete plan that balances fast movement with deeper
 transformation.
 
-## Two Horizons
+## The Two Paths
 
 ```mermaid
 %%{init: {'theme':'neutral'}}%%
 graph TB
-  classDef azure  fill:#0078d4,stroke:#005a9e,color:#fff
-  classDef fabric fill:#742774,stroke:#5a1e5a,color:#fff
-  subgraph h1["Horizon 1 — Lift & Shift & Optimize"]
-    H1_VM(["VMs → Azure VMs"]):::azure
-    H1_SQL[("SQL Server → SQL Managed Instance")]:::azure
-    H1_FAB(["SQL MI Mirroring → Fabric"]):::fabric
+  classDef stabilize fill:#0078d4,stroke:#005a9e,color:#fff
+  classDef transform fill:#038387,stroke:#025356,color:#fff
+  classDef fabric    fill:#742774,stroke:#5a1e5a,color:#fff
+  subgraph stabilizePath["Stabilize — move and optimize"]
+    H1_VM(["VMs → Azure VMs"]):::stabilize
+    H1_SQL[("SQL Server → SQL Managed Instance")]:::stabilize
+    H1_FAB(["Supported SQL MI data → Fabric"]):::fabric
   end
-  subgraph h2["Horizon 2 — Modernize"]
-    H2_APP(["NET → Containerized .NET"]):::azure
-    H2_SQL[("SQL Server → Azure SQL Database")]:::azure
-    H2_FAB(["Azure SQL DB → Fabric"]):::fabric
+  subgraph transformPath["Transform — modernize and scale"]
+    H2_APP([".NET → Containerized services"]):::transform
+    H2_SQL[("SQL Server → Azure SQL Database")]:::transform
+    H2_FAB(["Supported Azure SQL data → Fabric"]):::fabric
   end
   H1_VM --> H1_SQL
   H1_SQL -.-> H1_FAB
   H2_APP --> H2_SQL
   H2_SQL -.-> H2_FAB
-  style h1 fill:#e6f3ff,stroke:#0078d4
-  style h2 fill:#e6f3ff,stroke:#0078d4
+  style stabilizePath fill:#e6f3ff,stroke:#0078d4
+  style transformPath fill:#e6fafa,stroke:#038387
 ```
 
-### Horizon 1 — Lift & Shift & Optimize
+### Stabilize
 
-Move workloads to Azure with minimal application changes.
-VMs migrate to Azure VMs. SQL Server databases migrate to
-**Azure SQL Managed Instance** — a fully managed service that
-provides near-100% compatibility with on-premises SQL Server.
+Move workloads to Azure with minimal application changes. VMs migrate to Azure
+VMs. SQL Server databases migrate to **Azure SQL Managed Instance** when
+compatibility and operational continuity matter.
 
-**Why choose H1?**
+Choose Stabilize when the priority is to:
 
-- Fast time to value — weeks, not months
-- Minimal application risk — the code does not change
-- Customer-specific cost optimization through right-sizing and reservations
-- If aligned with strategy: enable **SQL MI Mirroring to Fabric**
-  for near-real-time analytics without custom ETL for supported tables
+- reduce datacenter dependency quickly;
+- lower application change risk;
+- right-size infrastructure using assessment evidence;
+- improve operations with managed patching, backup, monitoring, and resilience;
+- enable Fabric mirroring for supported SQL MI tables when analytics is part of
+  the strategy.
 
-### Horizon 2 — Modernize
+### Transform
 
-Re-architect applications for cloud-native benefits.
-.NET Framework applications are upgraded to .NET (Core) and
-containerized. Databases migrate to **Azure SQL Database** —
-a cloud-native PaaS service with elastic scale, built-in HA,
-and advanced security.
+Re-architect applications and data platforms for cloud-native benefits. .NET
+Framework applications are upgraded where appropriate, containerized, and paired
+with managed Azure data services such as **Azure SQL Database**.
 
-**Why choose H2?**
+Choose Transform when the priority is to:
 
-- Elastic scale — handle traffic spikes without over-provisioning
-- CI/CD and DevOps-ready — containers enable modern deployment pipelines
-- Lower operational overhead where PaaS and serverless fit the workload
-- If aligned with strategy: enable **Azure SQL DB in Fabric**
-  for a unified, AI-ready data platform
+- increase product agility and release frequency;
+- support elastic or unpredictable demand;
+- reduce operational overhead where PaaS and serverless fit the workload;
+- establish modern DevOps and deployment practices;
+- build richer governed data products in Fabric when readiness checks pass.
 
 ## Sequential, Parallel, or Both
 
-The Horizons model is not a rigid sequence. Strategy decides
-which pattern fits:
+The paths are not a rigid sequence. Strategy decides which pattern fits:
 
 ```mermaid
 %%{init: {'theme':'neutral'}}%%
 graph LR
-  classDef h1     fill:#0078d4,stroke:#005a9e,color:#fff
-  classDef h2     fill:#038387,stroke:#025356,color:#fff
-  classDef phased fill:#742774,stroke:#5a1e5a,color:#fff
+  classDef stabilize fill:#0078d4,stroke:#005a9e,color:#fff
+  classDef transform fill:#038387,stroke:#025356,color:#fff
+  classDef phased    fill:#742774,stroke:#5a1e5a,color:#fff
   A{"Workload<br/>assessment"}
-  A -->|"Stable, low-change"| H1(["<b>Horizon 1</b><br/>Lift & Shift"]):::h1
-  A -->|"High business value,<br/>needs agility"| H2(["<b>Horizon 2</b><br/>Modernize"]):::h2
-  A -->|"Start H1,<br/>evolve later"| BOTH(["<b>H1 → H2</b><br/>Phased"]):::phased
+  A -->|"Stable, low-change"| S(["<b>Stabilize</b><br/>Move and optimize"]):::stabilize
+  A -->|"High business value,<br/>needs agility"| T(["<b>Transform</b><br/>Modernize and scale"]):::transform
+  A -->|"Move first,<br/>modernize later"| BOTH(["<b>Stabilize → Transform</b><br/>Phased"]):::phased
 ```
 
-- **Some workloads stay H1 forever** — they are stable, well-understood,
-  and the business does not need them to change
-- **Some workloads go directly to H2** — they are high-priority,
-  customer-facing, or need capabilities that only cloud-native provides
-- **Some workloads start H1 and evolve to H2** — get them to Azure quickly,
-  then modernize when the team is ready
+- **Some workloads stay Stabilize** because they are stable, well-understood,
+  and do not need cloud-native change.
+- **Some workloads go directly to Transform** because they are customer-facing,
+  high-priority, or need capabilities that only a modern platform provides.
+- **Some workloads start Stabilize and evolve to Transform** once the team is
+  ready and the business case is clear.
 
 :::note[Strategy decides, not technology]
-The worst modernization programs try to modernize everything at once.
-The best ones let the business strategy determine the right horizon
-for each workload — and accept that not everything needs to be cloud-native.
+The worst modernization programs try to modernize everything at once. The best
+ones let business strategy determine the right path for each workload and
+accept that not every system needs to become cloud-native.
 :::
 
 ## Deep Dives
 
-Explore each horizon and its Fabric integration in detail:
+Explore each path and its Fabric integration in detail:
 
-- [Horizon 1 — Lift & Shift & Optimize](/dc2fabric/horizons/h1-lift-shift/)
-- [Horizon 1 + Fabric](/dc2fabric/horizons/h1-fabric/)
-- [Horizon 2 — Modernize](/dc2fabric/horizons/h2-modernize/)
-- [Horizon 2 + Fabric](/dc2fabric/horizons/h2-fabric/)
+- [Stabilize Workloads](/dc2fabric/horizons/h1-lift-shift/)
+- [Stabilize + Fabric](/dc2fabric/horizons/h1-fabric/)
+- [Transform Platforms](/dc2fabric/horizons/h2-modernize/)
+- [Transform + Fabric](/dc2fabric/horizons/h2-fabric/)
 
 [← Back to Assessment](/dc2fabric/assessment/) · [Skip to Execution →](/dc2fabric/execution/)

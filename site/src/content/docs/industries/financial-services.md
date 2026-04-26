@@ -7,9 +7,9 @@ sidebar:
 
 :::tip[TL;DR]
 Woodgrove Bank: 340 VMs, 45 SQL databases, 28 .NET apps. Core banking
-and regulatory systems go H1 (months 1–5); digital banking and fraud
-detection go H2 (months 3–9). Fabric supports governed reporting and
-near-real-time transaction monitoring when controls are configured.
+and regulatory systems follow Stabilize (months 1–5); digital banking and
+fraud detection follow Transform (months 3–9). Fabric supports governed
+reporting and near-real-time transaction monitoring when controls are configured.
 :::
 
 **Woodgrove Bank** is a regional bank with 200+ branches and a growing
@@ -50,25 +50,25 @@ Azure Migrate reveals the estate:
 | .NET applications    | 28    | 20 are .NET Framework, 5 are .NET 6+, 3 are legacy VB.NET |
 | SQL Server databases | 45    | 38 compatible with SQL MI, 7 need feature review          |
 
-## The Horizons Decision
+## The Path Decision
 
-| Workload                       | Horizon | Rationale                                                |
+| Workload                       | Path      | Rationale                                                |
 | ------------------------------ | ------- | -------------------------------------------------------- |
-| Core banking systems           | **H1**  | Stability is paramount, minimal-downtime cutover needed  |
-| Regulatory reporting databases | **H1**  | Data sovereignty requirements met by SQL MI in-region    |
-| Digital banking app            | **H2**  | Customer-facing, needs elastic scale and rapid iteration |
-| Fraud detection engine         | **H2**  | Needs real-time processing, ML integration               |
+| Core banking systems           | **Stabilize** | Stability is paramount, minimal-downtime cutover needed  |
+| Regulatory reporting databases | **Stabilize** | Data sovereignty requirements met by SQL MI in-region    |
+| Digital banking app            | **Transform** | Customer-facing, needs elastic scale and rapid iteration |
+| Fraud detection engine         | **Transform** | Needs real-time processing, ML integration               |
 
 ## Execution
 
-**Horizon 1** (Months 1-5):
+**Stabilize** (Months 1-5):
 
 - Migrate core banking VMs in controlled waves with extended
   parallel-run validation (regulatory requirement)
 - Migrate reporting databases to SQL Managed Instance
 - Enable SQL MI Mirroring to Fabric for regulatory reporting
 
-**Horizon 2** (Months 3-9):
+**Transform** (Months 3-9):
 
 - Modernize digital banking: containerize, deploy to Container Apps
   with autoscaling for traffic spikes
@@ -84,11 +84,11 @@ graph TB
   classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
   classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
   classDef bi      fill:#fde8f9,stroke:#742774,color:#3a003a
-  subgraph h1["Horizon 1"]
+  subgraph h1["Stabilize"]
     CORE[("Core Banking → SQL MI")]:::azure
     REG[("Regulatory DB → SQL MI")]:::azure
   end
-  subgraph h2["Horizon 2"]
+  subgraph h2["Transform"]
     DIGI[("Digital Banking → Azure SQL DB")]:::azure
     FRAUD[("Fraud Engine → Azure SQL DB")]:::azure
   end

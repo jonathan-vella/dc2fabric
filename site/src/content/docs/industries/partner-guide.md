@@ -11,7 +11,7 @@ sidebar:
 :::tip[TL;DR]
 This page collects everything a Microsoft partner needs to position and
 deliver the dc2fabric modernization journey — conversation starters,
-horizon decision criteria, Fabric value propositions, and objection
+path decision criteria, Fabric value propositions, and objection
 handling — all in one place.
 :::
 
@@ -34,11 +34,11 @@ business problem first. The technology recommendation gains credibility
 when it directly addresses a stated business need.
 :::
 
-## The Horizons Decision Framework
+## The Two Modernization Paths Decision Framework
 
-Use this decision tree to match workloads to the right horizon:
+Use this decision tree to match workloads to the right path:
 
-| Criteria                      | Horizon 1 (Lift & Shift)            | Horizon 2 (Modernize)                   |
+| Criteria                      | Stabilize                           | Transform                               |
 | ----------------------------- | ----------------------------------- | --------------------------------------- |
 | **Business change frequency** | Stable, low change rate             | Actively developed, frequent releases   |
 | **Scale requirements**        | Predictable, steady load            | Spiky, elastic, or growing rapidly      |
@@ -56,7 +56,7 @@ Tailor the Fabric message to the stakeholder:
 ### For the CTO / CIO
 
 > "Fabric can reduce the need for separate ETL pipelines and duplicated
-> analytical stores. Supported operational data from both migration horizons
+> analytical stores. Supported operational data from both modernization paths
 > can land in OneLake and be governed for BI, ML, and AI workloads."
 
 ### For the CFO
@@ -85,7 +85,7 @@ Tailor the Fabric message to the stakeholder:
 
 | Objection                                         | Response                                                                                                                                                                                                                           |
 | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| "We are not ready for a full cloud migration."    | The Horizons model is designed for exactly this — start with H1 for quick wins and low risk, evolve to H2 only where the business case justifies it.                                                                               |
+| "We are not ready for a full cloud migration."    | The path model is designed for exactly this — start with Stabilize for quick wins and low risk, then Transform only where the business case justifies it.                                                                          |
 | "We already have a data warehouse."               | Fabric does not replace an existing warehouse overnight. SQL MI Mirroring runs alongside your current setup. Start with one workload, prove the value, then expand.                                                                |
 | "Kubernetes is too complex for our team."         | Azure Container Apps abstracts away Kubernetes. Your developers deploy containers without managing clusters, nodes, or networking.                                                                                                 |
 | "We cannot afford downtime for migration."        | The Managed Instance link uses near-real-time replication to SQL MI and limits downtime to final cutover. Azure DMS is available as a fallback. VM migration uses replication with planned cutover windows and rollback criteria.  |
@@ -111,24 +111,24 @@ Before positioning Fabric mirroring as an execution milestone, validate:
 ### Manufacturing (Contoso Industries)
 
 - **Trigger**: Board-level mandate for near-real-time supply chain visibility
-- **H1 workloads**: ERP, MES (127 VMs, 22 databases)
-- **H2 workloads**: Customer portal, supply chain dashboard
+- **Stabilize workloads**: ERP, MES (127 VMs, 22 databases)
+- **Transform workloads**: Customer portal, supply chain dashboard
 - **Fabric payoff**: Predictive maintenance + supply chain Power BI dashboard
 - [Full story →](/dc2fabric/industries/manufacturing/)
 
 ### Financial Services (Woodgrove Bank)
 
 - **Trigger**: Regulatory requirement for near-real-time transaction monitoring
-- **H1 workloads**: Core banking, regulatory databases (340 VMs, 45 databases)
-- **H2 workloads**: Digital banking app, fraud detection engine
+- **Stabilize workloads**: Core banking, regulatory databases (340 VMs, 45 databases)
+- **Transform workloads**: Digital banking app, fraud detection engine
 - **Fabric payoff**: Regulatory dashboards + fraud analytics and monitoring
 - [Full story →](/dc2fabric/industries/financial-services/)
 
 ### Retail (Northwind Traders)
 
 - **Trigger**: CEO digital-first strategy, e-commerce scaling failures
-- **H1 workloads**: ERP, loyalty program (65 VMs, 12 databases)
-- **H2 workloads**: E-commerce platform, customer analytics
+- **Stabilize workloads**: ERP, loyalty program (65 VMs, 12 databases)
+- **Transform workloads**: E-commerce platform, customer analytics
 - **Fabric payoff**: Customer 360 dashboard + recommendation engine
 - [Full story →](/dc2fabric/industries/retail/)
 
@@ -139,9 +139,9 @@ Use this as a starting point — adjust based on estate size and complexity:
 | Phase                             | Duration   | Activities                                                    |
 | --------------------------------- | ---------- | ------------------------------------------------------------- |
 | **Discovery & Strategy** (MCEM 1) | 2–4 weeks  | Business workshops, stakeholder alignment, CAF Strategy       |
-| **Assess & Design** (MCEM 2)      | 4–6 weeks  | Azure Migrate scan, horizons classification, architecture     |
-| **H1 Execution** (MCEM 3)         | 4–12 weeks | VM waves, SQL MI migration, Fabric mirroring                  |
-| **H2 Execution** (MCEM 3)         | 3–6 months | .NET modernization, containerization, CI/CD, Azure SQL DB     |
+| **Assess & Design** (MCEM 2)      | 4–6 weeks  | Azure Migrate scan, path classification, architecture         |
+| **Stabilize Execution** (MCEM 3)  | 4–12 weeks | VM waves, SQL MI migration, Fabric mirroring                  |
+| **Transform Execution** (MCEM 3)  | 3–6 months | .NET modernization, containerization, CI/CD, Azure SQL DB     |
 | **Value Realization** (MCEM 4)    | 2–4 weeks  | Cost review, analytics rollout, outcomes measurement          |
 | **Manage & Optimize** (MCEM 5)    | Ongoing    | Continuous optimization, Fabric expansion, skills development |
 

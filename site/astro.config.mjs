@@ -39,7 +39,7 @@ export default defineConfig({
           autogenerate: { directory: "assessment" },
         },
         {
-          label: "Horizons",
+          label: "Modernization Paths",
           badge: { text: "Stage 2", variant: "note" },
           autogenerate: { directory: "horizons" },
         },
@@ -58,9 +58,19 @@ export default defineConfig({
           autogenerate: { directory: "journey-map" },
         },
         {
+          label: "Partner Guide",
+          link: "/industries/partner-guide/",
+          badge: { text: "Partners", variant: "caution" },
+        },
+        {
           label: "Industries",
-          badge: { text: "Stories + Guide", variant: "tip" },
-          autogenerate: { directory: "industries" },
+          badge: { text: "Stories", variant: "tip" },
+          items: [
+            { label: "Industry Stories", link: "/industries/" },
+            { label: "Manufacturing", link: "/industries/manufacturing/" },
+            { label: "Financial Services", link: "/industries/financial-services/" },
+            { label: "Retail", link: "/industries/retail/" },
+          ],
         },
       ],
       editLink: {

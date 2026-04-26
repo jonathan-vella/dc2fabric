@@ -1,147 +1,135 @@
 ---
 title: "dc2fabric"
-description: "The Modernization Journey from Datacenter to Microsoft Fabric"
+description: "A partner-ready modernization journey from datacenter platforms to Azure and Microsoft Fabric."
 template: splash
 hero:
   tagline: >
-    A structured modernization journey from on-premises datacenters to Azure
-    and Microsoft Fabric — using the Cloud Adoption Framework, MCEM methodology,
-    and the Horizons model. Modernization is a journey, not a big bang.
+    A structured way for Microsoft partners to frame strategy, assess workloads,
+    choose the right modernization path, and connect Azure migration outcomes to
+    governed Fabric analytics.
   actions:
-    - text: Start the Journey
-      link: /dc2fabric/strategy/
-      icon: right-arrow
-    - text: View Journey Map
+    - text: Explore the Journey
       link: /dc2fabric/journey-map/
+      icon: right-arrow
+    - text: Open Partner Guide
+      link: /dc2fabric/industries/partner-guide/
       variant: minimal
 ---
 
-import { CardGrid, Card, LinkCard } from "@astrojs/starlight/components";
-
 ## The Journey at a Glance
+
+<div class="landing-lede">
+  dc2fabric turns a complex datacenter-to-cloud conversation into a clear partner motion: define the strategy,
+  assess the estate, choose the right path for each workload, realize value, then keep optimizing.
+</div>
 
 <div class="mcem-journey" role="list" aria-label="Modernization journey stages">
   <div class="mcem-stage" role="listitem">
     <div class="mcem-badge">MCEM 1</div>
-    <div class="mcem-title">Define the Strategy</div>
-    <div class="mcem-sub">CAF · Business Case</div>
+    <div class="mcem-title">Strategy</div>
+    <div class="mcem-sub">CAF · Business case</div>
   </div>
   <div class="mcem-connector" aria-hidden="true"></div>
   <div class="mcem-stage" role="listitem">
     <div class="mcem-badge">MCEM 2</div>
-    <div class="mcem-title">Discover &amp; Design</div>
-    <div class="mcem-sub">Azure Migrate</div>
+    <div class="mcem-title">Assess</div>
+    <div class="mcem-sub">Evidence · Design</div>
   </div>
   <div class="mcem-connector" aria-hidden="true"></div>
   <div class="mcem-stage" role="listitem">
     <div class="mcem-badge">MCEM 3</div>
-    <div class="mcem-title">Migrate &amp; Modernize</div>
-    <div class="mcem-sub">H1 · H2 · Horizons</div>
+    <div class="mcem-title">Choose Path</div>
+    <div class="mcem-sub">Stabilize · Transform</div>
   </div>
   <div class="mcem-connector" aria-hidden="true"></div>
   <div class="mcem-stage" role="listitem">
     <div class="mcem-badge">MCEM 4</div>
-    <div class="mcem-title">Realize the Value</div>
+    <div class="mcem-title">Realize Value</div>
     <div class="mcem-sub">TCO · Fabric</div>
   </div>
   <div class="mcem-connector" aria-hidden="true"></div>
   <div class="mcem-stage mcem-stage--growth" role="listitem">
     <div class="mcem-badge">MCEM 5</div>
     <div class="mcem-title">Optimize &amp; Grow</div>
-    <div class="mcem-sub">Advisor · Optimization · AI</div>
+    <div class="mcem-sub">Advisor · AI</div>
   </div>
 </div>
 
-<p class="mcem-journey-note">
-  The final stage is highlighted to show the shift from migration delivery into continuous optimization,
-  AI enablement, and long-term growth.
-</p>
+<div class="mcem-journey-note">
+  The final stage is highlighted because the engagement shifts from migration delivery into continuous optimization,
+  Fabric expansion, and AI-enabled growth.
+</div>
 
-## By the Numbers
+## Two Modernization Paths
 
-<CardGrid>
-  <Card title="2 Horizons" icon="list-format">
-    **H1** — Lift & Shift in weeks. **H2** — Modernize over months. Strategy
-    decides which path each workload takes.
-  </Card>
-  <Card title="Customer-Specific TCO" icon="approve-check-circle">
-    Right-sizing, reservations, and PaaS choices can improve cost outcomes. Use
-    Azure Migrate business cases and the [Azure TCO Calculator][azure-tco] for
-    quantified estimates.
-  </Card>
-  <Card title="Mirrored Analytics" icon="rocket">
-    SQL MI and Azure SQL DB can mirror supported operational data to Fabric in
-    near-real time without custom ETL pipelines for those tables.
-  </Card>
-  <Card title="5 MCEM Stages" icon="open-book">
-    Define the Strategy → Discover & Design → Migrate & Modernize → Realize the
-    Value → Optimize & Grow. A proven engagement methodology.
-  </Card>
-</CardGrid>
+<div class="section-lede">
+  Every workload needs a deliberate path. Some workloads should move quickly and become better operated on Azure.
+  Others deserve deeper transformation because the business needs agility, scale, analytics, or AI readiness.
+</div>
 
-## What You Will Learn
+<div class="path-grid">
+  <article class="path-card path-card--stabilize">
+    <div class="eyebrow">Path 1</div>
+    <h3>Stabilize</h3>
+    <div class="path-card-text">
+      Move priority workloads to Azure, reduce datacenter dependency, right-size infrastructure, and prepare
+      operational data for governed analytics.
+    </div>
+    <a href="/dc2fabric/horizons/h1-lift-shift/">See the stabilize path</a>
+  </article>
+  <article class="path-card path-card--transform">
+    <div class="eyebrow">Path 2</div>
+    <h3>Transform</h3>
+    <div class="path-card-text">
+      Modernize applications and data platforms with managed Azure services, Fabric integration, governance, and
+      AI-ready foundations.
+    </div>
+    <a href="/dc2fabric/horizons/h2-modernize/">See the transform path</a>
+  </article>
+</div>
 
-<CardGrid>
-  <LinkCard
-    title="Strategy First"
-    description="Align modernization to business outcomes using CAF and MCEM Stage 1."
-    href="/dc2fabric/strategy/"
-  />
-  <LinkCard
-    title="Assess Everything"
-    description="Azure Migrate scans VMs, apps, and databases for evidence-based decisions."
-    href="/dc2fabric/assessment/"
-  />
-  <LinkCard
-    title="The Horizons Model"
-    description="Match each workload to the right level of modernization."
-    href="/dc2fabric/horizons/"
-  />
-  <LinkCard
-    title="Execution & Guardrails"
-    description="Migrate in waves with validation checkpoints at every step."
-    href="/dc2fabric/execution/"
-  />
-  <LinkCard
-    title="Fabric as the Unifier"
-    description="All data converges in OneLake — one analytics platform, not two."
-    href="/dc2fabric/outcomes/"
-  />
-  <LinkCard
-    title="Full Journey Map"
-    description="The complete MCEM journey with stage-by-stage breakdown and Gantt timeline."
-    href="/dc2fabric/journey-map/"
-  />
-</CardGrid>
+## Fabric as the Destination
 
-## Three Industries, One Journey
+<section class="fabric-panel" aria-label="Fabric as the governed analytics destination">
+  <div>
+    <div class="eyebrow">Governed analytics</div>
+    <h3>Connect migration outcomes to Fabric value</h3>
+    <div class="fabric-copy">
+      SQL Managed Instance and Azure SQL Database can mirror supported operational data into Microsoft Fabric, where
+      it can become governed data products for Power BI, machine learning, real-time intelligence, and AI scenarios.
+    </div>
+  </div>
+  <ul>
+    <li>Validate source support, permissions, networking, and capacity before committing timelines.</li>
+    <li>Recreate Fabric security, ownership, labels, endorsement, lineage, and access reviews explicitly.</li>
+    <li>Treat Fabric as the analytics operating model, not just a replication target.</li>
+  </ul>
+</section>
 
-Every organization's path from datacenter to cloud is unique — but the
-pattern is universal. Explore how three different industries navigate
-the same modernization journey, then use the partner guide to frame account
-planning and customer conversations.
+## Start with One of Three Routes
 
-<CardGrid>
-  <Card title="Manufacturing" icon="setting">
-    **Contoso Industries** — 127 VMs, near-real-time supply chain visibility,
-    predictive maintenance via Fabric. [Read the story
-    →](/dc2fabric/industries/manufacturing/)
-  </Card>
-  <Card title="Financial Services" icon="approve-check-circle">
-    **Woodgrove Bank** — 340 VMs, governed reporting, fraud monitoring, and
-    unified customer analytics via Fabric. [Read the story
-    →](/dc2fabric/industries/financial-services/)
-  </Card>
-  <Card title="Retail" icon="open-book">
-    **Northwind Traders** — 65 VMs, seasonal autoscaling, Customer 360 view via
-    Fabric. [Read the story →](/dc2fabric/industries/retail/)
-  </Card>
-</CardGrid>
+<div class="route-grid">
+  <a class="route-card" href="/dc2fabric/journey-map/">
+    <span class="eyebrow">End-to-end view</span>
+    <strong>Explore the Journey Map</strong>
+    <span>See how strategy, assessment, paths, execution, value, and optimization fit together.</span>
+  </a>
+  <a class="route-card" href="/dc2fabric/horizons/">
+    <span class="eyebrow">Workload decisions</span>
+    <strong>Compare the Two Paths</strong>
+    <span>Choose Stabilize or Transform for each workload using assessment evidence.</span>
+  </a>
+  <a class="route-card" href="/dc2fabric/industries/partner-guide/">
+    <span class="eyebrow">Partner enablement</span>
+    <strong>Use the Partner Guide</strong>
+    <span>Prepare customer conversations, objection handling, Fabric readiness, and delivery planning.</span>
+  </a>
+</div>
 
-:::note[For Microsoft Partners]
-Delivering this journey to your customers? The
-[Partner Guide](/dc2fabric/industries/partner-guide/) has conversation
-starters, objection handling, and industry quick-reference cards.
-:::
-
-[azure-tco]: https://azure.microsoft.com/pricing/tco/calculator/
+<div class="trust-strip" aria-label="dc2fabric trust signals">
+  <span>CAF-aligned</span>
+  <span>MCEM-framed</span>
+  <span>Assessment-led</span>
+  <span>Fabric-aware</span>
+  <span>Partner-ready</span>
+</div>

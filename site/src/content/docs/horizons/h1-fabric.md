@@ -1,6 +1,6 @@
 ---
-title: "Horizon 1 + Fabric"
-description: "SQL Managed Instance Mirroring to Microsoft Fabric — analytics without re-architecting"
+title: "Stabilize + Fabric"
+description: "SQL Managed Instance mirroring to Microsoft Fabric for governed analytics without re-architecting."
 sidebar:
   order: 3
 ---
@@ -12,10 +12,10 @@ data and does not require application code changes, but production overhead,
 networking, permissions, and unsupported features must be validated.
 :::
 
-Here is the multiplier on Horizon 1: with supported databases and the right
-connectivity, operational data from SQL Managed Instance can be mirrored into
-Microsoft Fabric for near-real-time analytics, reporting, and AI without custom
-ETL pipeline development for the mirrored tables.
+Here is the multiplier on the Stabilize path: with supported databases and the
+right connectivity, operational data from SQL Managed Instance can be mirrored
+into Microsoft Fabric for near-real-time analytics, reporting, and AI without
+custom ETL pipeline development for the mirrored tables.
 
 ## SQL MI Mirroring to Fabric
 
@@ -103,7 +103,7 @@ Mirroring makes sense when the customer's strategy includes:
 If these are not strategic priorities today, mirroring can be enabled later
 after readiness validation, permissions design, and capacity planning.
 
-[← Back to H1 Lift & Shift](/dc2fabric/horizons/h1-lift-shift/) · [Next: H2 Modernize →](/dc2fabric/horizons/h2-modernize/)
+[← Back to Stabilize Workloads](/dc2fabric/horizons/h1-lift-shift/) · [Next: Transform Platforms →](/dc2fabric/horizons/h2-modernize/)
 
 [sql-mi-limits]: https://learn.microsoft.com/fabric/mirroring/azure-sql-managed-instance-limitations
 [sql-mi-security]: https://learn.microsoft.com/fabric/mirroring/azure-sql-managed-instance-how-to-data-security
