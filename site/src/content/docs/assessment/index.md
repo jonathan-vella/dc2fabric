@@ -22,7 +22,7 @@ moves, how it moves, and in what order.
 This is **MCEM Stage 2: Inspire and Design**. We show the customer what is
 possible and begin shaping the solution. The assessment transforms abstract
 modernization goals into concrete, workload-specific recommendations backed
-by data — setting the stage for horizons design.
+by data — setting the stage for modernization path design.
 
 ## Decide, Plan, and Execute Evidence
 
@@ -92,14 +92,14 @@ is often the first time an organization has a complete, accurate inventory
 of its own estate.
 :::
 
-## From Assessment to Horizons
+## From Assessment to Modernization Paths
 
 The assessment data feeds directly into the next phase: designing a
-**Horizons-based roadmap** that matches each workload to the right
-modernization path — whether that is a quick lift-and-shift (Horizon 1)
-or a deeper cloud-native transformation (Horizon 2).
+**Two Modernization Paths** roadmap that matches each workload to the right
+level of change — whether that is Stabilize for lower-disruption migration or
+Transform for deeper cloud-native modernization.
 
-[← Back to Strategy](/dc2fabric/strategy/) · [Continue to Horizons →](/dc2fabric/horizons/)
+[← Back to Strategy](/dc2fabric/strategy/) · [Continue to Modernization Paths →](/dc2fabric/horizons/)
 
 [azure-migrate-overview]: https://learn.microsoft.com/azure/migrate/migrate-services-overview
 [azure-migrate-planning]: https://learn.microsoft.com/azure/migrate/concepts-migration-planning

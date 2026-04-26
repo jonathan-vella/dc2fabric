@@ -1,21 +1,22 @@
 ---
-title: "Horizon 1 — Lift & Shift & Optimize"
-description: "Migrate VMs to Azure and SQL Server to SQL Managed Instance for quick wins and reduced risk"
+title: "Stabilize Workloads"
+description: "Move priority workloads to Azure and SQL Managed Instance with lower disruption and measured risk."
 sidebar:
   order: 2
 ---
 
 :::tip[TL;DR]
-Horizon 1 migrates VMs to Azure and databases to SQL Managed Instance in
-**4–8 weeks** for many small-to-mid estates, with low application-change risk.
+The Stabilize path migrates VMs to Azure and databases to SQL Managed Instance
+in **4–8 weeks** for many small-to-mid estates, with low application-change risk.
 Right-sizing, reservations, and managed database operations can improve cost
 and resilience, but quantified savings should come from Azure Migrate and TCO
 analysis for the customer estate.
 :::
 
-Horizon 1 is about getting to Azure quickly and safely. The applications
-do not change. The databases stay compatible. But the infrastructure
-underneath becomes modern, managed, and cost-optimized.
+Stabilize is about getting to Azure quickly and safely. The applications do not
+change. The databases stay compatible. But the infrastructure underneath becomes
+modern, managed, and cost-optimized. In the underlying Horizons model, this path
+maps to Horizon 1.
 
 ## What Moves
 
@@ -51,7 +52,7 @@ graph TB
 
 ## Why SQL Managed Instance
 
-SQL Managed Instance is the key to Horizon 1. It provides near-100%
+SQL Managed Instance is the key to the Stabilize path. It provides near-100%
 compatibility with on-premises SQL Server — which means databases move
 without application code changes.
 
@@ -73,7 +74,7 @@ without application code changes.
 
 ## Quick Wins
 
-Horizon 1 delivers measurable value within weeks:
+The Stabilize path delivers measurable value within weeks:
 
 - **Right-sizing**: VMs are provisioned to match actual utilization,
   not peak-plus-headroom estimates from five years ago
@@ -86,7 +87,7 @@ Horizon 1 delivers measurable value within weeks:
 
 ## Before and After
 
-| Dimension            | Before (On-Premises)              | After (Horizon 1)                    |
+| Dimension            | Before (On-Premises)              | After (Stabilize)                    |
 | -------------------- | --------------------------------- | ------------------------------------ |
 | **Infrastructure**   | Self-managed VMs, manual patching | Azure VMs with automated patching    |
 | **Database**         | SQL Server (self-managed)         | SQL Managed Instance (fully managed) |
@@ -102,10 +103,10 @@ Calculator to quantify savings. Percentages vary by utilization, license
 position, SKU selection, region, reservations, and operational practices.
 :::
 
-:::tip[H1 is not a compromise]
+:::tip[Stabilize is not a compromise]
 Lift and shift is sometimes dismissed as "just moving the problem to the
-cloud." But when done right — with proper right-sizing, reserved instances,
-and managed database services — H1 delivers immediate, measurable business
+cloud." But when done right — with proper right-sizing, reserved instances, and
+managed database services — Stabilize delivers immediate, measurable business
 value while buying time for deeper modernization where it matters most.
 :::
 
@@ -113,10 +114,10 @@ value while buying time for deeper modernization where it matters most.
 
 Once workloads are running in Azure, you have two paths:
 
-1. **Stay in H1** — For stable, low-change workloads, this is the right answer.
+1. **Stay in Stabilize** — For stable, low-change workloads, this is the right answer.
    Add [Fabric integration via SQL MI Mirroring](/dc2fabric/horizons/h1-fabric/)
    to unlock analytics without any further changes.
-2. **Evolve to H2** — For workloads that need elasticity, modern DevOps, or
-   cloud-native capabilities, plan a [Horizon 2 modernization](/dc2fabric/horizons/h2-modernize/).
+2. **Evolve to Transform** — For workloads that need elasticity, modern DevOps, or
+  cloud-native capabilities, plan a [Transform modernization](/dc2fabric/horizons/h2-modernize/).
 
-[← Back to Horizons Overview](/dc2fabric/horizons/) · [Next: H1 + Fabric →](/dc2fabric/horizons/h1-fabric/)
+[← Back to Modernization Paths](/dc2fabric/horizons/) · [Next: Stabilize + Fabric →](/dc2fabric/horizons/h1-fabric/)

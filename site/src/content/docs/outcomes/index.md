@@ -6,10 +6,10 @@ sidebar:
 ---
 
 :::tip[TL;DR]
-H1 and H2 outcomes must be measured against the customer's business case, not
-generic savings percentages. Both horizons can feed supported data into Fabric
-via mirroring, creating a governed analytics platform. MCEM Stage 5 keeps cost,
-operations, governance, and adoption improving after migration.
+Stabilize and Transform outcomes must be measured against the customer's
+business case, not generic savings percentages. Both paths can feed supported
+data into Fabric via mirroring, creating a governed analytics platform. MCEM
+Stage 5 keeps cost, operations, governance, and adoption improving.
 :::
 
 The workloads are migrated. The analytics platform is live. Now we
@@ -23,13 +23,13 @@ This is **MCEM Stage 4: Realize Value**. The customer sees the results
 of their investment — not in technical metrics, but in business outcomes
 that matter to their leadership team.
 
-## Outcomes by Horizon
+## Outcomes by Modernization Path
 
-| Outcome                    | Horizon 1                                                  | Horizon 2                                             |
+| Outcome                    | Stabilize                                                  | Transform                                             |
 | -------------------------- | ---------------------------------------------------------- | ----------------------------------------------------- |
 | **Infrastructure cost**    | Right-sized Azure run rate validated by assessment data    | PaaS and serverless economics validated by telemetry  |
 | **Operational overhead**   | Managed patching, backups, and HA replace manual processes | Fully managed platform — no infrastructure to operate |
-| **Time to deploy changes** | Days (same as before, but on better infrastructure)        | Minutes (CI/CD pipelines with automated testing)      |
+| **Time to deploy changes** | Days, now on better infrastructure                         | Minutes with CI/CD pipelines and automated testing    |
 | **Scale capability**       | Vertical scaling within VM SKU families                    | Elastic horizontal scaling, scale-to-zero             |
 | **Analytics latency**      | Near-real-time via SQL MI Mirroring                        | Near-real-time via Azure SQL DB Mirroring             |
 
@@ -42,7 +42,7 @@ for customer-specific projections.
 
 ## Fabric as the Unifier
 
-Regardless of which horizon each workload followed, supported mirrored and
+Regardless of which path each workload followed, supported mirrored and
 shortcutted data can converge in Microsoft Fabric. This is the strategic payoff
 of the journey:
 
@@ -52,11 +52,11 @@ graph TB
   classDef sql     fill:#0078d4,stroke:#005a9e,color:#fff
   classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
   classDef bi      fill:#fde8f9,stroke:#742774,color:#3a003a
-  subgraph h1["Horizon 1 Workloads"]
+  subgraph h1["Stabilize Workloads"]
     MI1[("SQL MI — ERP")]:::sql
     MI2[("SQL MI — MES")]:::sql
   end
-  subgraph h2["Horizon 2 Workloads"]
+  subgraph h2["Transform Workloads"]
     DB1[("Azure SQL DB — E-commerce")]:::sql
     DB2[("Azure SQL DB — Customer Portal")]:::sql
   end
@@ -76,7 +76,7 @@ graph TB
 ```
 
 :::tip[One platform, not two]
-The customer should not need separate analytics operating models for H1 and H2
+The customer should not need separate analytics operating models for Stabilize and Transform
 workloads. Fabric can unify mirrored and shortcutted data in OneLake, while
 governance, ownership, endorsement, sensitivity labels, and access reviews make
 the data trustworthy enough to use.
@@ -92,16 +92,16 @@ roadmap provide the operating-model foundation.
 
 Modernization is a journey, not a big bang. After the initial migration:
 
-- **H1 workloads** continue to deliver value and can evolve to H2 when
+- **Stabilize workloads** continue to deliver value and can evolve to Transform when
   the business case justifies it
-- **H2 workloads** continue to modernize — adopting new Azure services,
+- **Transform workloads** continue to modernize — adopting new Azure services,
   improving resilience, expanding capabilities
 - **Fabric** grows with the business — new data sources, analytics use cases,
   and governed AI scenarios where the data and controls are ready
 - **The team** continues to develop cloud skills and operational maturity
 
-The Horizons model ensures that every step forward delivers measurable
-value — and that no step requires a disruptive, high-risk transformation.
+The modernization path model ensures that every step forward delivers
+measurable value — and that no step requires a disruptive transformation.
 
 **Modernization is a journey, not a big bang.**
 
@@ -127,8 +127,9 @@ their Azure and Fabric investments:
 - **Fabric adoption maturity** — Establish executive sponsorship, content
   ownership, a Center of Excellence, mentoring, and a community of practice so
   governed data products become normal ways of working
-- **H1 → H2 evolution** — Re-evaluate H1 workloads periodically; when the
-  business case justifies modernization, plan the transition to H2
+- **Stabilize → Transform evolution** — Re-evaluate Stabilize workloads
+  periodically; when the business case justifies modernization, plan the
+  transition to Transform
 - **Skills development** — Continue upskilling the customer team in Azure,
   Fabric, and DevOps practices
 

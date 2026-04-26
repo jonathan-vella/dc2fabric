@@ -1,20 +1,19 @@
 ---
 title: "The Execution"
-description: "Delivering Horizon 1 and Horizon 2 migrations with Azure Migrate, MI Link, and DevOps — MCEM Stage 3: Empower and Achieve"
+description: "Delivering Stabilize and Transform migrations with Azure Migrate, MI Link, and DevOps — MCEM Stage 3"
 sidebar:
   order: 1
 ---
 
 :::tip[TL;DR]
-H1 runs in parallel with H2. VMs and SQL MI migrate in waves over weeks;
-.NET containerization and Azure SQL DB take months. Every wave follows a
-pre-migrate → migrate → validate → optimize guardrail. The customer team
-builds cloud skills throughout.
+Stabilize can run in parallel with Transform. VMs and SQL MI migrate in waves
+over weeks; .NET containerization and Azure SQL DB take months. Every wave
+follows a pre-migrate → migrate → validate → optimize guardrail.
 :::
 
-The roadmap is approved. The workloads are assigned to horizons. Now we
-execute — methodically, with guardrails, and with continuous validation
-at every step.
+The roadmap is approved. The workloads are assigned to modernization paths. Now
+we execute — methodically, with guardrails, and with continuous validation at
+every step.
 
 ## MCEM Stage 3 — Empower and Achieve
 
@@ -23,7 +22,7 @@ to deliver the migration with Microsoft support, tooling, and best practices.
 The goal is not just to move workloads — it is to build the customer's
 capability to operate and evolve their Azure environment independently.
 
-## Execution by Horizon
+## Execution by Modernization Path
 
 ```mermaid
 %%{init: {'theme':'neutral'}}%%
@@ -31,19 +30,19 @@ gantt
   title Migration Execution Timeline
   dateFormat YYYY-MM
   axisFormat %b %Y
-  section Horizon 1
+   section Stabilize
     VM assessment & planning     :h1a, 2026-01, 1M
     VM migration waves           :h1b, after h1a, 2M
     SQL MI migration & validation:h1c, after h1a, 2M
     Fabric mirroring setup       :h1d, after h1c, 1M
-  section Horizon 2
+   section Transform
     .NET upgrade & containerization :h2a, 2026-03, 3M
     Azure SQL DB migration          :h2b, after h2a, 1M
     CI/CD pipeline setup            :h2c, 2026-03, 2M
     Fabric mirroring setup          :h2d, after h2b, 1M
 ```
 
-### Horizon 1 — Execution Steps
+### Stabilize — Execution Steps
 
 1. **Prepare landing zone** (CAF [Ready](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/) phase) —
    Azure Virtual Network, NSGs, Azure Backup vaults, monitoring baselines
@@ -62,7 +61,7 @@ gantt
 6. **Enable Fabric mirroring** — Configure SQL MI Mirroring to OneLake
    for workloads where analytics is a strategic priority
 
-### Horizon 2 — Execution Steps
+### Transform — Execution Steps
 
 1. **Upgrade .NET applications** — Use the .NET Upgrade Assistant or the
    GitHub Copilot modernization agent to migrate from .NET Framework
@@ -130,7 +129,7 @@ customer team builds skills in:
 By the time the migration is complete, the customer does not just have
 workloads in Azure — they have a team that knows how to operate them.
 
-[← Back to Horizons](/dc2fabric/horizons/) · [Continue to Outcomes →](/dc2fabric/outcomes/)
+[← Back to Modernization Paths](/dc2fabric/horizons/) · [Continue to Outcomes →](/dc2fabric/outcomes/)
 
 [caf-migration-plan]: https://learn.microsoft.com/azure/cloud-adoption-framework/migrate/plan-migration
 [caf-wave-planning]: https://learn.microsoft.com/azure/cloud-adoption-framework/migrate/migration-wave-planning

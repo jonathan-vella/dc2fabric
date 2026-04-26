@@ -1,27 +1,26 @@
 ---
-title: "Horizon 2 + Fabric"
-description: "Azure SQL Database in Microsoft Fabric — unified data estate for AI and analytics"
+title: "Transform + Fabric"
+description: "Azure SQL Database mirroring to Microsoft Fabric for governed analytics, AI, and data products."
 sidebar:
   order: 5
 ---
 
 :::tip[TL;DR]
-Modernized H2 apps produce richer data. Azure SQL DB mirroring to Fabric
+Transform workloads can produce richer data. Azure SQL DB mirroring to Fabric
 combines cloud-native data models with governed analytics, ML, and real-time
 intelligence when the source schema, permissions, and network design are ready.
 :::
 
-Horizon 2 applications produce richer, more granular data than their
-legacy predecessors. With **Azure SQL Database mirroring to Fabric**,
-that data flows directly into the unified data platform — ready for
-analytics, AI, and cross-system insights.
+Transform applications can produce richer, more granular data than their legacy
+predecessors. With **Azure SQL Database mirroring to Fabric**, that data flows
+directly into the unified data platform — ready for analytics, AI, and
+cross-system insights.
 
 ## Azure SQL DB in Fabric
 
-Like SQL MI Mirroring, Azure SQL Database can mirror its data into
-Fabric's OneLake. But because H2 applications are typically more
-modern in their data patterns, the Fabric integration unlocks
-additional capabilities.
+Like SQL MI Mirroring, Azure SQL Database can mirror its data into Fabric's
+OneLake. But because Transform applications are typically more modern in their
+data patterns, the Fabric integration unlocks additional capabilities.
 
 ```mermaid
 %%{init: {'theme':'neutral'}}%%
@@ -42,12 +41,12 @@ graph LR
   ONELAKE --> RTI
 ```
 
-## Why H2 + Fabric is More Powerful
+## Why Transform + Fabric is More Powerful
 
 Modernized applications produce better data. Combined with Fabric,
 this creates a compounding advantage:
 
-| H1 + Fabric                              | H2 + Fabric                            |
+| Stabilize + Fabric                       | Transform + Fabric                     |
 | ---------------------------------------- | -------------------------------------- |
 | Mirrors existing database schemas as-is  | Modern schemas optimized for analytics |
 | Batch-oriented application data patterns | Event-driven, real-time data streams   |
@@ -56,7 +55,7 @@ this creates a compounding advantage:
 
 ## The Unified Data Estate
 
-Whether a customer follows Horizon 1, Horizon 2, or both, Fabric can become a
+Whether a customer follows Stabilize, Transform, or both, Fabric can become a
 governed destination for supported operational and analytical data:
 
 ```mermaid
@@ -65,10 +64,10 @@ graph TB
   classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
   classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
   classDef bi      fill:#fde8f9,stroke:#742774,color:#3a003a
-  subgraph h1["Horizon 1"]
+  subgraph h1["Stabilize"]
     SQLMI[("SQL Managed Instance")]:::azure
   end
-  subgraph h2["Horizon 2"]
+  subgraph h2["Transform"]
     SQLDB[("Azure SQL Database")]:::azure
   end
   OL(["OneLake"]):::onelake
@@ -103,8 +102,8 @@ For the customer, this means:
   provides unified data governance, classification, and policy enforcement
   across the entire data estate — OneLake, Azure, on-premises, and
   third-party sources
-- **Incremental value** — H1 workloads contribute data to Fabric today;
-  as they evolve to H2, the data gets richer — but the platform is already
+- **Incremental value** — Stabilize workloads contribute data to Fabric today;
+  as they evolve to Transform, the data gets richer — but the platform is already
   in place
 
 :::caution[Mirroring is not security propagation]
@@ -150,7 +149,7 @@ classification and access-review process, documented refresh or replication
 expectations, and a support path for data consumers. The platform team provides
 guardrails; business data-product owners make the data usable and trusted.
 
-[← Back to H2 Modernize](/dc2fabric/horizons/h2-modernize/) · [Continue to Execution →](/dc2fabric/execution/)
+[← Back to Transform Platforms](/dc2fabric/horizons/h2-modernize/) · [Continue to Execution →](/dc2fabric/execution/)
 
 [sql-db-limits]: https://learn.microsoft.com/fabric/mirroring/azure-sql-database-limitations
 [fabric-adoption-roadmap]: https://learn.microsoft.com/power-bi/guidance/fabric-adoption-roadmap

@@ -7,21 +7,21 @@ sidebar:
 
 :::tip[TL;DR]
 Use these industry stories as conversation scaffolding, not proof points. Each
-story shows how the same strategy, assessment, horizons, execution, and Fabric
+story shows how the same strategy, assessment, path decisions, execution, and Fabric
 operating model can be adapted to a customer's business context.
 :::
 
 The industry pages help Microsoft employees and partners turn the dc2fabric
 journey into account-specific conversations. Start with the customer's business
 pressure, map that pressure to assessment evidence, then decide which workloads
-belong in Horizon 1, Horizon 2, or a phased H1-to-H2 path.
+belong in Stabilize, Transform, or a phased Stabilize-to-Transform path.
 
 ## How to Use These Stories
 
 | Use case                       | How the stories help                                               |
 | ------------------------------ | ------------------------------------------------------------------ |
 | **Account planning**           | Identify likely triggers, stakeholders, workloads, and objections  |
-| **Customer workshops**         | Show how strategy drives horizon decisions before tools are chosen |
+| **Customer workshops**         | Show how strategy drives path decisions before tools are chosen    |
 | **Solution framing**           | Connect Azure migration, modernization, and Fabric data products   |
 | **Partner delivery alignment** | Keep discovery, execution, and governance language consistent      |
 
@@ -40,7 +40,7 @@ customer-specific estimates and commitments.
 - [Retail: Northwind Traders](/dc2fabric/industries/retail/) — seasonal scale,
   Customer 360, inventory visibility, and faster release cycles.
 - [Partner Guide](/dc2fabric/industries/partner-guide/) — conversation starters,
-  horizon decision criteria, objection handling, and Fabric readiness checks.
+  path decision criteria, objection handling, and Fabric readiness checks.
 
 ## Delivery Lens
 
