@@ -96,10 +96,17 @@ th {
   border-radius: 0.5rem;
   padding: 1.25rem 1rem;
   min-width: 7.75rem;
+  height: 9.25rem;
   min-height: 9.25rem;
   flex: 1 1 7.75rem;
   max-width: 10.25rem;
   justify-content: center;
+  box-sizing: border-box;
+}
+
+.mcem-journey .mcem-stage,
+.mcem-journey .mcem-connector {
+  margin-top: 0;
 }
 
 .mcem-stage--growth {
