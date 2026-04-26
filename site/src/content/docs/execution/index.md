@@ -104,11 +104,11 @@ execution. Each wave should have:
 
 - Dependency grouping validated by application owners and Azure Migrate data
 - A nonproduction rehearsal or lower-risk production candidate before critical
-   production workloads
+  production workloads
 - Migration method selection tied to workload requirements, not preference
 - Planned cutover windows, rollback criteria, and stakeholder approval
 - Post-cutover validation for functionality, performance, security, backup,
-   monitoring, and business acceptance
+  monitoring, and business acceptance
 
 Lessons from each wave should update later waves. This keeps the roadmap
 evidence-based as new dependencies, constraints, and operating practices emerge.

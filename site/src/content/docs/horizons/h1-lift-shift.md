@@ -19,11 +19,11 @@ underneath becomes modern, managed, and cost-optimized.
 
 ## What Moves
 
-| On-Premises           | Azure Target                 | Migration Tool                   |
-| --------------------- | ---------------------------- | -------------------------------- |
-| Windows Server VMs    | Azure Virtual Machines       | Azure Migrate                    |
-| SQL Server databases  | Azure SQL Managed Instance   | MI Link / Azure DMS              |
-| Network configuration | Azure Virtual Network + NSGs | Azure Migrate                    |
+| On-Premises           | Azure Target                 | Migration Tool      |
+| --------------------- | ---------------------------- | ------------------- |
+| Windows Server VMs    | Azure Virtual Machines       | Azure Migrate       |
+| SQL Server databases  | Azure SQL Managed Instance   | MI Link / Azure DMS |
+| Network configuration | Azure Virtual Network + NSGs | Azure Migrate       |
 
 ## The Architecture
 

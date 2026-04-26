@@ -69,14 +69,14 @@ migration? Is the horizons roadmap approved by the customer?
 
 **Focus:** Execute the migration and build customer capability.
 
-| Activity                                 | Outcome                             |
-| ---------------------------------------- | ----------------------------------- |
-| H1: VM migration waves via Azure Migrate | Workloads running on Azure VMs      |
-| H1: SQL MI migration via MI Link / DMS   | Databases on SQL Managed Instance   |
-| H2: .NET upgrade and containerization    | Apps on Azure Container Apps        |
-| H2: Azure SQL DB migration               | Databases on Azure SQL Database     |
-| Fabric mirroring configuration           | Operational data flowing to OneLake |
-| Cutover and rollback approval            | Business-approved production moves  |
+| Activity                                 | Outcome                                        |
+| ---------------------------------------- | ---------------------------------------------- |
+| H1: VM migration waves via Azure Migrate | Workloads running on Azure VMs                 |
+| H1: SQL MI migration via MI Link / DMS   | Databases on SQL Managed Instance              |
+| H2: .NET upgrade and containerization    | Apps on Azure Container Apps                   |
+| H2: Azure SQL DB migration               | Databases on Azure SQL Database                |
+| Fabric mirroring configuration           | Operational data flowing to OneLake            |
+| Cutover and rollback approval            | Business-approved production moves             |
 | Post-cutover validation                  | Functional, performance, and security sign-off |
 
 **Decision gate:** Are all workloads validated and performing as expected
@@ -97,13 +97,13 @@ in Azure? Is the on-premises environment ready for decommission?
 
 **Focus:** Continuously improve and expand the Azure and Fabric estate.
 
-| Activity                           | Outcome                                         |
-| ---------------------------------- | ----------------------------------------------- |
-| Ongoing cost optimization          | Azure Advisor reviews, reservation adjustments  |
-| Operational maturity advancement   | Proactive monitoring, automated remediation     |
-| Fabric workload expansion          | New data sources, new dashboards, AI/ML models  |
-| H1 → H2 evolution assessment       | Periodic review of H1 workloads for H2 readiness|
-| Continuous improvement planning    | Roadmap for next engagement cycle               |
+| Activity                         | Outcome                                          |
+| -------------------------------- | ------------------------------------------------ |
+| Ongoing cost optimization        | Azure Advisor reviews, reservation adjustments   |
+| Operational maturity advancement | Proactive monitoring, automated remediation      |
+| Fabric workload expansion        | New data sources, new dashboards, AI/ML models   |
+| H1 → H2 evolution assessment     | Periodic review of H1 workloads for H2 readiness |
+| Continuous improvement planning  | Roadmap for next engagement cycle                |
 
 ## Horizons Across MCEM
 

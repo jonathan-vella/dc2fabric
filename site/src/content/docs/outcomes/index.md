@@ -25,13 +25,13 @@ that matter to their leadership team.
 
 ## Outcomes by Horizon
 
-| Outcome                    | Horizon 1                                                    | Horizon 2                                             |
-| -------------------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| **Infrastructure cost**    | Right-sized Azure run rate validated by assessment data      | PaaS and serverless economics validated by telemetry  |
-| **Operational overhead**   | Managed patching, backups, and HA replace manual processes   | Fully managed platform — no infrastructure to operate |
-| **Time to deploy changes** | Days (same as before, but on better infrastructure)          | Minutes (CI/CD pipelines with automated testing)      |
-| **Scale capability**       | Vertical scaling within VM SKU families                      | Elastic horizontal scaling, scale-to-zero             |
-| **Analytics latency**      | Near-real-time via SQL MI Mirroring                          | Near-real-time via Azure SQL DB Mirroring             |
+| Outcome                    | Horizon 1                                                  | Horizon 2                                             |
+| -------------------------- | ---------------------------------------------------------- | ----------------------------------------------------- |
+| **Infrastructure cost**    | Right-sized Azure run rate validated by assessment data    | PaaS and serverless economics validated by telemetry  |
+| **Operational overhead**   | Managed patching, backups, and HA replace manual processes | Fully managed platform — no infrastructure to operate |
+| **Time to deploy changes** | Days (same as before, but on better infrastructure)        | Minutes (CI/CD pipelines with automated testing)      |
+| **Scale capability**       | Vertical scaling within VM SKU families                    | Elastic horizontal scaling, scale-to-zero             |
+| **Analytics latency**      | Near-real-time via SQL MI Mirroring                        | Near-real-time via Azure SQL DB Mirroring             |
 
 :::note[Cost savings are estimates]
 Actual savings vary by workload, SKU selection, and usage patterns. Use the

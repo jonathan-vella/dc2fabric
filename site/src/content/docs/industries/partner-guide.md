@@ -38,16 +38,16 @@ when it directly addresses a stated business need.
 
 Use this decision tree to match workloads to the right horizon:
 
-| Criteria                      | Horizon 1 (Lift & Shift)          | Horizon 2 (Modernize)                   |
-| ----------------------------- | --------------------------------- | --------------------------------------- |
-| **Business change frequency** | Stable, low change rate           | Actively developed, frequent releases   |
-| **Scale requirements**        | Predictable, steady load          | Spiky, elastic, or growing rapidly      |
-| **Application complexity**    | Works well as-is                  | Needs refactoring or new capabilities   |
-| **Risk tolerance**            | Low — minimize disruption         | Moderate — willing to invest in change  |
-| **Time to value**             | Weeks                             | Months                                  |
-| **Cost model**                | Azure Migrate and TCO estimate    | PaaS/serverless model validated by data |
-| **Fabric integration**        | SQL MI Mirroring for supported data | SQL DB Mirroring plus data products    |
-| **Best for**                  | ERP, back-office, stable LOB apps | Customer-facing, e-commerce, new builds |
+| Criteria                      | Horizon 1 (Lift & Shift)            | Horizon 2 (Modernize)                   |
+| ----------------------------- | ----------------------------------- | --------------------------------------- |
+| **Business change frequency** | Stable, low change rate             | Actively developed, frequent releases   |
+| **Scale requirements**        | Predictable, steady load            | Spiky, elastic, or growing rapidly      |
+| **Application complexity**    | Works well as-is                    | Needs refactoring or new capabilities   |
+| **Risk tolerance**            | Low — minimize disruption           | Moderate — willing to invest in change  |
+| **Time to value**             | Weeks                               | Months                                  |
+| **Cost model**                | Azure Migrate and TCO estimate      | PaaS/serverless model validated by data |
+| **Fabric integration**        | SQL MI Mirroring for supported data | SQL DB Mirroring plus data products     |
+| **Best for**                  | ERP, back-office, stable LOB apps   | Customer-facing, e-commerce, new builds |
 
 ## Fabric Value Proposition — By Audience
 
@@ -88,7 +88,7 @@ Tailor the Fabric message to the stakeholder:
 | "We are not ready for a full cloud migration."    | The Horizons model is designed for exactly this — start with H1 for quick wins and low risk, evolve to H2 only where the business case justifies it.                                                                               |
 | "We already have a data warehouse."               | Fabric does not replace an existing warehouse overnight. SQL MI Mirroring runs alongside your current setup. Start with one workload, prove the value, then expand.                                                                |
 | "Kubernetes is too complex for our team."         | Azure Container Apps abstracts away Kubernetes. Your developers deploy containers without managing clusters, nodes, or networking.                                                                                                 |
-| "We cannot afford downtime for migration."        | The Managed Instance link uses near-real-time replication to SQL MI and limits downtime to final cutover. Azure DMS is available as a fallback. VM migration uses replication with planned cutover windows and rollback criteria. |
+| "We cannot afford downtime for migration."        | The Managed Instance link uses near-real-time replication to SQL MI and limits downtime to final cutover. Azure DMS is available as a fallback. VM migration uses replication with planned cutover windows and rollback criteria.  |
 | "How is this different from just using Power BI?" | Power BI is the visualization layer. Fabric includes the data lake (OneLake), data engineering (Spark), data science (ML), and real-time intelligence — all on one platform. Power BI becomes more powerful when backed by Fabric. |
 
 ## Fabric Readiness Checklist
@@ -136,14 +136,14 @@ Before positioning Fabric mirroring as an execution milestone, validate:
 
 Use this as a starting point — adjust based on estate size and complexity:
 
-| Phase                                      | Duration   | Activities                                                    |
-| ------------------------------------------ | ---------- | ------------------------------------------------------------- |
-| **Discovery & Strategy** (MCEM 1)          | 2–4 weeks  | Business workshops, stakeholder alignment, CAF Strategy       |
-| **Assess & Design** (MCEM 2)               | 4–6 weeks  | Azure Migrate scan, horizons classification, architecture     |
-| **H1 Execution** (MCEM 3)                  | 4–12 weeks | VM waves, SQL MI migration, Fabric mirroring                  |
-| **H2 Execution** (MCEM 3)                  | 3–6 months | .NET modernization, containerization, CI/CD, Azure SQL DB     |
-| **Value Realization** (MCEM 4)             | 2–4 weeks  | Cost review, analytics rollout, outcomes measurement          |
-| **Manage & Optimize** (MCEM 5)             | Ongoing    | Continuous optimization, Fabric expansion, skills development |
+| Phase                             | Duration   | Activities                                                    |
+| --------------------------------- | ---------- | ------------------------------------------------------------- |
+| **Discovery & Strategy** (MCEM 1) | 2–4 weeks  | Business workshops, stakeholder alignment, CAF Strategy       |
+| **Assess & Design** (MCEM 2)      | 4–6 weeks  | Azure Migrate scan, horizons classification, architecture     |
+| **H1 Execution** (MCEM 3)         | 4–12 weeks | VM waves, SQL MI migration, Fabric mirroring                  |
+| **H2 Execution** (MCEM 3)         | 3–6 months | .NET modernization, containerization, CI/CD, Azure SQL DB     |
+| **Value Realization** (MCEM 4)    | 2–4 weeks  | Cost review, analytics rollout, outcomes measurement          |
+| **Manage & Optimize** (MCEM 5)    | Ongoing    | Continuous optimization, Fabric expansion, skills development |
 
 :::caution[Timelines scale with estate size]
 A 50-VM estate might complete in 3 months. A 500-VM enterprise might take

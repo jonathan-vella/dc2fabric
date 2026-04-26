@@ -76,8 +76,8 @@ graph LR
 
 A good assessment replaces assumptions with explicit migration evidence:
 
-| Evidence area              | What to use it for                                                |
-| -------------------------- | ----------------------------------------------------------------- |
+| Evidence area              | What to use it for                                                 |
+| -------------------------- | ------------------------------------------------------------------ |
 | **Azure readiness**        | Identify workloads that are ready, conditionally ready, or blocked |
 | **Right-sizing**           | Compare as-is sizing with performance-based sizing                 |
 | **Cost estimation**        | Build customer-specific run-rate and TCO projections               |
