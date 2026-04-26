@@ -1,275 +1,184 @@
 <!-- markdownlint-disable MD013 MD033 MD041 -->
 
-# APEX Accelerator
+# dc2fabric
 
-<div align="center">
-  <img
-   src="https://capsule-render.vercel.app/api?type=waving&height=180&color=0:0A66C2,50:0078D4,110:00B7C3&text=APEX&fontSize=44&fontColor=FFFFFF&fontAlignY=34&desc=Agentic%20Platform%20Engineering%20eXperience%20for%20Azure&descAlignY=56"
-   alt="APEX banner" />
-</div>
+> A structured modernization journey from datacenter platforms to Azure and Microsoft Fabric, powered by the
+> APEX agentic infrastructure workflow.
 
-> **Modernize your Azure Infrastructure with AI.** A production-ready template for building Well-Architected
-> environments using custom Copilot agents, Dev Containers, and the Model Context Protocol (MCP).
-
-[![Azure](https://img.shields.io/badge/Azure-0078D4?logo=microsoft-azure&logoColor=white)](https://azure.microsoft.com)
-[![Bicep](https://img.shields.io/badge/Bicep-0078D4?logo=azure-pipelines&logoColor=white)](https://github.com/Azure/bicep)
-[![Terraform](https://img.shields.io/badge/Terraform-7B42BC?logo=terraform&logoColor=white)](https://www.terraform.io)
-[![Copilot](https://img.shields.io/badge/GitHub_Copilot-000000?logo=github-copilot&logoColor=white)](https://github.com/features/copilot)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Azure][badge-azure]][azure]
+[![Microsoft Fabric][badge-fabric]][fabric]
+[![Bicep][badge-bicep]][bicep]
+[![Terraform][badge-terraform]][terraform]
+[![GitHub Copilot][badge-copilot]][copilot]
+[![License: MIT][badge-license]][license]
 
 ## Overview
 
-This accelerator provides the scaffolding and governance to move from requirements to deployed infrastructure
-using an orchestrated multi-agent workflow. It leverages domain-specific AI agents to ensure every deployment
-is Well-Architected, governed, and documented.
+dc2fabric is a modernization guide and implementation workspace for moving from on-premises datacenters to Azure
+and Microsoft Fabric. The public site is the business journey: Cloud Adoption Framework strategy, MCEM engagement
+stages, workload assessment, H1 / H2 modernization horizons, migration execution, and Fabric outcomes.
 
-**What you get**: Specialized agents, skills, validation scripts, a full dev container with all
-tools pre-installed, and an optional weekly sync workflow that keeps your agents and skills up to date with
-the [upstream APEX project](https://github.com/jonathan-vella/azure-agentic-infraops).
+This repository adds the implementation engine underneath that journey. APEX, the Agentic Platform Engineering
+eXperience for Azure, provides Copilot agents, skills, validation scripts, and Infrastructure as Code patterns that
+turn modernization decisions into governed, deployable Azure environments.
 
----
+Use the repository when you want to:
+
+- Explain the datacenter-to-Fabric journey to customers, partners, or internal teams.
+- Capture workload requirements and architecture decisions through a guided agent workflow.
+- Generate Bicep or Terraform infrastructure that follows Azure Well-Architected and CAF conventions.
+- Validate governance, security, naming, documentation, and artifact quality before deployment.
+- Keep journey documentation and implementation guidance aligned in one workspace.
+
+## Journey Model
+
+The public documentation at [dc2fabric](https://jonathan-vella.github.io/dc2fabric/) is the source of truth for the
+modernization narrative.
+
+| Area                  | Purpose                                       | Repository support                          |
+| --------------------- | --------------------------------------------- | ------------------------------------------- |
+| Strategy              | Align outcomes, CAF guidance, and scope       | Requirements and architecture artifacts     |
+| Discover and design   | Assess workloads, dependencies, and readiness | Architecture assessment, diagrams, and ADRs |
+| Migrate and modernize | Choose H1 or H2 per workload                  | Bicep and Terraform tracks                  |
+| Realize the value     | Connect migration to cost and Fabric value    | Cost estimates, summaries, and runbooks     |
+| Optimize and grow     | Improve reliability, cost, and security       | As-built docs and governance evidence       |
+
+The Horizons model keeps execution pragmatic:
+
+- **H1**: move eligible workloads quickly with minimal redesign.
+- **H2**: modernize selected workloads over time using Azure platform services and Microsoft Fabric integration.
 
 ## Prerequisites
 
-| Requirement            | Details                                              |
-| ---------------------- | ---------------------------------------------------- |
-| **VS Code**            | Latest stable release                                |
-| **GitHub Copilot**     | Active license (Individual, Business, or Enterprise) |
-| **Docker Desktop**     | For the dev container (or GitHub Codespaces)         |
-| **Azure subscription** | Optional for Steps 1-5; required for Step 6 (Deploy) |
-
----
+| Requirement             | Details                                               |
+| ----------------------- | ----------------------------------------------------- |
+| VS Code                 | Latest stable release                                 |
+| GitHub Copilot          | Active license (Individual, Business, or Enterprise)  |
+| Docker Desktop          | For the dev container, or use GitHub Codespaces       |
+| Azure subscription      | Optional for planning; required for deployment        |
+| Microsoft Fabric tenant | Required only for Fabric-specific implementation work |
 
 ## Quick Start
 
-### 1. Create Your Repository
-
-This repository is a **GitHub Template** — not a fork.
-
-1. Click **"Use this template"** → **"Create a new repository"** at the top of this page
-2. Choose an owner and name (e.g., `my-infraops-project`)
-3. Select **Public** or **Private**
-4. Click **Create repository**
-
-> Your new repo has the same directory structure and files but a **clean commit history**
-> and no fork relationship. It is entirely yours.
-
-### 2. Clone and Open in Dev Container
+### Clone and Open
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/my-infraops-project.git
-cd my-infraops-project
+git clone https://github.com/jonathan-vella/dc2fabric.git
+cd dc2fabric
 code .
 ```
 
-When prompted by VS Code, click **"Reopen in Container"** (or run `Dev Containers: Reopen in Container`
-from the Command Palette). The container build takes 3-5 minutes and pre-installs:
+When VS Code prompts you, select **Reopen in Container**. You can also run
+**Dev Containers: Reopen in Container** from the Command Palette. The container installs the Azure CLI, Terraform,
+Bicep, GitHub CLI, Node.js, Python, Go, validation tooling, and local MCP server dependencies.
 
-- Azure CLI with Bicep extension
-- Terraform CLI with TFLint
-- GitHub CLI (`gh`)
-- Node.js + npm (validation scripts)
-- Python 3 + pip (MCP server, diagram generation)
-- Go (Terraform MCP server)
-
-### 3. Initialize Your Repository
-
-After the dev container starts, run the initialization commands:
+### Install Dependencies
 
 ```bash
 npm install
+```
+
+### Prepare a Derived Repository
+
+If you created your own repository from this one, run the initialization script after the dev container starts:
+
+```bash
+npm run init -- --dry-run
 npm run init
-npm run sync:workflows
 ```
 
-**What these do:**
+The script replaces template repository references with the current GitHub remote. Review the diff before committing.
 
-| Command                  | Purpose                                                                                                                                                                                       |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm install`            | Install Node.js dependencies (validation scripts, linting)                                                                                                                                    |
-| `npm run init`           | **One-time setup** — replaces all references to the accelerator template repo with your repo's URL (auto-detected from git remote). Run `npm run init -- --dry-run` first to preview changes. |
-| `npm run sync:workflows` | Fetches the latest GitHub Actions workflows from the [upstream APEX project](https://github.com/jonathan-vella/azure-agentic-infraops) into your `.github/workflows/` directory                |
-
-After running, review and commit:
+### Authenticate for Azure Work
 
 ```bash
-git diff
-git add -A && git commit -m "chore: initialize from template"
-```
-
-### 4. Authenticate (Optional)
-
-```bash
-# Required only for Step 6 (Deploy) and governance discovery
 az login
 ```
 
----
+Azure authentication is required for governance discovery, deployment previews, and live deployments. Planning and
+local documentation work can run without an Azure session.
 
 ## Project Structure
 
-Once you are working in your repo, here is what lives where:
-
 ```text
 .github/
-  agents/              # Agent definitions (*.agent.md)
-    _subagents/        # Subagent definitions (non-user-invocable)
-  skills/              # Reusable domain knowledge (SKILL.md per skill)
-  instructions/        # File-type rules with glob-based auto-application
-  copilot-instructions.md  # VS Code Copilot-specific orchestration instructions
-  workflows/           # GitHub Actions (sync, CI, validation)
-agent-output/          # Generated artifacts organized by project
-  {project}/           # 01-requirements.md through 07-*.md
+  agents/                  # Copilot agent definitions
+  skills/                  # Reusable agent skills
+  instructions/            # Glob-scoped coding and documentation rules
+  copilot-instructions.md  # VS Code Copilot orchestration guidance
+  workflows/               # Repository-owned GitHub Actions
+agent-output/              # Generated workflow artifacts by project
 infra/
-  bicep/{project}/     # Bicep templates (main.bicep + modules/)
-  terraform/{project}/ # Terraform configurations (main.tf + modules/)
-mcp/                   # MCP servers
-scripts/               # Validation scripts
-docs/                  # Documentation site source
+  bicep/                   # Bicep project templates and conventions
+  terraform/               # Terraform project templates and conventions
+site/                      # Astro Starlight dc2fabric public documentation
+tools/
+  mcp-servers/             # Local MCP servers used by agents
+  registry/                # Agent, count, and workflow registries
+  schemas/                 # JSON schemas for validation
+  scripts/                 # Validation and automation scripts
+tests/                     # Test fixtures and validation coverage
 ```
 
-### What's Yours vs. What's Upstream
+## Working With APEX Agents
 
-| Your files (safe to edit, never overwritten by sync) | Upstream-managed files (overwritten by sync) |
-| ---------------------------------------------------- | -------------------------------------------- |
-| `agent-output/` — generated project artifacts        | `.github/agents/` — agent definitions        |
-| `infra/bicep/` — your Bicep templates                | `.github/skills/` — agent skills             |
-| `.github/workflows/` — your CI/CD workflows          | `.github/instructions/` — coding rules       |
-| `README.md` — your documentation                     | `.github/copilot-instructions.md`            |
-|                                                      | `scripts/`, `docs/`, `mcp/`, `package.json`  |
-|                                                      | `AGENTS.md`, `.devcontainer/`, `.vscode/`    |
+The APEX workflow moves from requirements through architecture, governance, implementation planning, IaC generation,
+deployment, and as-built documentation. The machine-readable source of truth is
+`.github/skills/workflow-engine/templates/workflow-graph.json`.
 
-> **Note**: If you disable the sync workflow, everything becomes yours to edit freely.
-> See [Customization](#customization) below.
+Start in VS Code Chat with the Orchestrator agent and describe the Azure modernization project. The workflow captures
+human approvals at key gates, writes artifacts to `agent-output/{project}/`, and routes infrastructure code to either
+`infra/bicep/{project}/` or `infra/terraform/{project}/` based on the requirements decision.
 
----
+The public site gives agents the business context for dc2fabric. The workflow graph, AGENTS files, skills, and
+instruction files give agents the technical source of truth for implementation.
 
-## Customization
+## Infrastructure Tracks
 
-### Changing defaults (regions, tags, naming)
+Both Azure IaC tracks are supported.
 
-When you create from this template, **every file is yours**. The question is which
-approach gives you the best experience over time.
+| Factor     | Bicep                                             | Terraform                                          |
+| ---------- | ------------------------------------------------- | -------------------------------------------------- |
+| Azure fit  | Native Azure DSL and ARM deployment semantics     | AzureRM provider with state-managed workflows      |
+| Modules    | Azure Verified Modules from the Bicep registry    | Azure Verified Modules from the Terraform registry |
+| Validation | `bicep build` and `bicep lint`                    | `terraform fmt`, `terraform init`, and `validate`  |
+| Deployment | Azure deployment commands or azd where configured | Terraform plan and apply                           |
 
-**Strategy A: Edit directly** (simplest)
+## Updating This Repository
 
-Edit the file you need — for example, change `swedencentral` to `westeurope` in
-`.github/skills/azure-defaults/SKILL.md`. If you don't plan to pull upstream
-improvements, disable the sync workflow entirely (repo Settings → Actions → disable
-**Upstream Sync**) and manage the repo as your own.
+The former weekly upstream-sync workflow is not active in this branch. Do not assume automated upstream refreshes are
+running. Treat the repository guidance, Copilot instructions, site, scripts, and workflows as repo-owned unless a
+separate change explicitly restores a sync model.
 
-If you want upstream updates later, re-enable the workflow. The sync PR will overwrite
-your edited files with the upstream version (it is not a merge), so you'll need to
-re-apply your changes after merging. Keep a record of what you changed.
+Manual update options remain available:
 
-**Strategy B: Keep sync enabled, layer your overrides** (recommended for teams that
-want continuous upstream improvements)
+- Pull selected improvements from the upstream APEX project by normal Git review.
+- Use `npm run sync:workflows` only when you intentionally want to refresh workflow files from the configured script.
+- Keep local dc2fabric changes in reviewable commits so updates can be compared cleanly.
 
-The sync workflow overwrites all upstream-managed files but never touches the four
-excluded paths. To safely store overrides that survive sync:
+## Validation
 
-1. **Edit the sync exclusion list** — the sync workflow file itself is user-owned
-   (`.github/workflows/` is excluded from sync). Open
-   `.github/workflows/weekly-upstream-sync.yml` and add paths to `EXCLUDE_PATHS` and
-   the matching `for path in ...` loop:
-
-   ```yaml
-   EXCLUDE_PATHS: |
-     .github/workflows/
-     agent-output/
-     infra/bicep/
-     infra/terraform/
-     README.md
-     AGENTS.md
-   ```
-
-   Then add your overrides to root `AGENTS.md` — it will survive all future syncs.
-
-2. **Use `infra/bicep/AGENTS.md`** — since `infra/bicep/` is already excluded from
-   sync, you can place an `AGENTS.md` there with your organization defaults. VS Code
-   loads subfolder `AGENTS.md` files when working with files in that directory.
-
-3. **VS Code user-profile instructions** — place a `.instructions.md` file in your
-   VS Code profile's `prompts/` folder. This lives outside the repo entirely and
-   applies to all your workspaces.
-
-**Which strategy to pick?**
-
-| Approach                          | Best for                                        |
-| --------------------------------- | ----------------------------------------------- |
-| **A: Edit directly, skip sync**   | Solo users, teams that self-manage updates      |
-| **B: Layer overrides, keep sync** | Teams that want automatic upstream improvements |
-
-### Adding new agents or skills
-
-Agents are defined in `.github/agents/*.agent.md` and skills in
-`.github/skills/*/SKILL.md`. You can add new ones alongside the existing set.
-If you keep sync enabled, use distinctive names that won't collide with upstream
-filenames, or add your custom paths to the sync exclusion list.
-
----
-
-## IaC Tracks: Bicep and Terraform
-
-Both IaC tracks are fully supported. The Requirements agent (Step 1) captures your
-`iac_tool` preference, and the Conductor routes Steps 4-6 to the correct track.
-
-| Factor          | Bicep                           | Terraform                                |
-| --------------- | ------------------------------- | ---------------------------------------- |
-| **Azure-only**  | Native DSL, first-class support | Multi-cloud via AzureRM provider         |
-| **State**       | No state file (ARM-managed)     | State file (Azure Storage backend)       |
-| **AVM modules** | `br/public:avm/res/`            | `registry.terraform.io/Azure/avm-res-*/` |
-| **CI/CD**       | `az deployment group create`    | `terraform plan` + `terraform apply`     |
-
----
-
-## Multi-Project Support
-
-The accelerator is designed for **one repo containing multiple projects**. Each project
-gets its own folders:
-
-- `agent-output/{project}/` — artifacts (requirements, architecture, plans, docs)
-- `infra/bicep/{project}/` or `infra/terraform/{project}/` — IaC templates
-
-Agents, skills, instructions, and the dev container are shared across all projects.
-
-**One repo per project** is also valid when teams need separate governance or isolation.
-Each repo is created independently from the template.
-
-### Sharing customizations across repos or teams
-
-- **Edit the sync exclusion list** in each repo to protect `AGENTS.md`, then maintain a
-  standard overrides section that you copy into each repo
-- **VS Code user-profile instructions** — personal preferences that follow you across
-  repos without any per-repo setup
-- **Canonical overrides in a shared location** — maintain a standard overrides snippet
-  in a team wiki or internal repo and copy it when creating new instances
-
----
-
-## Keeping Up to Date
-
-| What                                        | How                                          | Frequency      |
-| ------------------------------------------- | -------------------------------------------- | -------------- |
-| Agents, skills, instructions, docs, scripts | Automated weekly PR (upstream sync workflow) | Weekly         |
-| GitHub Actions workflows                    | `npm run sync:workflows` (manual)            | As needed      |
-| All validations                             | `npm run validate:all`                       | Before each PR |
-
-The sync workflow opens a PR for human review — it never auto-merges. You can disable
-it entirely if you prefer to manage updates manually.
-
----
-
-## Validation & Quality
+Run the focused checks for the files you changed, then broaden validation before a pull request.
 
 ```bash
-# Run all code and documentation validations
+# Markdown and repository documentation
+npm run lint:md
+npm run lint:docs-freshness
+npm run validate:no-hardcoded-counts
+
+# Instruction and workflow integrity
+npm run validate:instruction-checks
+npm run lint:workflow-table-sync
+npm run validate:agent-registry
+
+# Full validation suite
 npm run validate:all
+```
 
-# Fix markdown formatting
-npm run lint:md:fix
+Infrastructure-specific checks:
 
-# Bicep validation (replace {project})
+```bash
+# Bicep validation, replace {project}
 bicep build infra/bicep/{project}/main.bicep
 bicep lint infra/bicep/{project}/main.bicep
 
@@ -278,16 +187,28 @@ terraform fmt -check -recursive infra/terraform/
 cd infra/terraform/{project} && terraform init -backend=false && terraform validate
 ```
 
----
-
 ## Resources
 
+- [dc2fabric public site](https://jonathan-vella.github.io/dc2fabric/)
+- [dc2fabric journey map](https://jonathan-vella.github.io/dc2fabric/journey-map/)
 - [APEX upstream project](https://github.com/jonathan-vella/azure-agentic-infraops)
 - [APEX documentation](https://jonathan-vella.github.io/azure-agentic-infraops/)
-- [MicroHack (hands-on exercises)](https://jonathan-vella.github.io/microhack-agentic-infraops/)
-- [Prompt Guide](https://github.com/jonathan-vella/azure-agentic-infraops/tree/main/docs/prompt-guide)
-- [FAQ](https://jonathan-vella.github.io/azure-agentic-infraops/faq/)
+- [Azure Cloud Adoption Framework](https://learn.microsoft.com/azure/cloud-adoption-framework/)
+- [Microsoft Fabric documentation](https://learn.microsoft.com/fabric/)
 
 ## License
 
 [MIT](LICENSE)
+
+[azure]: https://azure.microsoft.com
+[badge-azure]: https://img.shields.io/badge/Azure-0078D4?logo=microsoft-azure&logoColor=white
+[badge-bicep]: https://img.shields.io/badge/Bicep-0078D4?logo=azure-pipelines&logoColor=white
+[badge-copilot]: https://img.shields.io/badge/GitHub_Copilot-000000?logo=github-copilot&logoColor=white
+[badge-fabric]: https://img.shields.io/badge/Microsoft_Fabric-0078D4?logo=microsoft&logoColor=white
+[badge-license]: https://img.shields.io/badge/License-MIT-yellow.svg
+[badge-terraform]: https://img.shields.io/badge/Terraform-7B42BC?logo=terraform&logoColor=white
+[bicep]: https://github.com/Azure/bicep
+[copilot]: https://github.com/features/copilot
+[fabric]: https://www.microsoft.com/microsoft-fabric
+[license]: LICENSE
+[terraform]: https://www.terraform.io

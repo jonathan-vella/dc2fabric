@@ -8,7 +8,7 @@ sidebar:
 :::tip[TL;DR]
 Contoso Industries: 127 VMs, 22 SQL databases, 14 .NET apps. ERP and MES
 go H1 (months 1–4); customer portal and supply chain dashboard go H2
-(months 3–8). Fabric delivers the CEO’s real-time supply chain dashboard.
+(months 3–8). Fabric supports a near-real-time supply chain dashboard.
 :::
 
 **Contoso Industries** is a mid-sized manufacturer with 15 production
@@ -21,7 +21,7 @@ decisions that leadership needs to make.
 Contoso's business is under pressure from multiple directions:
 
 - **Supply chain disruption** — Global events have exposed the fragility
-  of Contoso's just-in-time supply chain. Leadership wants real-time
+  of Contoso's just-in-time supply chain. Leadership wants near-real-time
   visibility into production, inventory, and supplier performance.
 - **Aging infrastructure** — The on-premises data center runs 127 Windows
   Server VMs, including a critical ERP system built on .NET Framework 4.6
@@ -34,7 +34,7 @@ Contoso's business is under pressure from multiple directions:
 
 :::note[Why now?]
 Contoso's CEO has committed to the board that the company will have
-real-time supply chain visibility within 18 months. The existing
+near-real-time supply chain visibility within 18 months. The existing
 infrastructure cannot deliver this. The modernization program is not
 an IT initiative — it is a board-level strategic priority.
 :::
@@ -75,6 +75,7 @@ Azure Migrate reveals the estate:
 ## The Payoff
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph TB
   classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
   classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
@@ -102,10 +103,10 @@ graph TB
 
 **Business outcomes:**
 
-- Real-time supply chain visibility — delivered to the CEO's dashboard
-  in Power BI, updated in near-real-time from production systems
+- Near-real-time supply chain visibility — delivered to the CEO's dashboard
+  in Power BI, with replication latency validated during rollout
 - Predictive maintenance models trained on actual production data in
-  Fabric, reducing unplanned downtime by identifying equipment issues
-  before they cause failures
-- 35% infrastructure cost reduction through right-sizing and PaaS
+  Fabric, prioritizing equipment risk before maintenance windows
+- Infrastructure cost reduction measured through Azure Migrate business-case
+  assumptions, right-sizing, reservations, and PaaS adoption where appropriate
 - IT team upskilled in Azure operations and Fabric analytics

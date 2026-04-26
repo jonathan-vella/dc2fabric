@@ -6,11 +6,10 @@ sidebar:
 ---
 
 :::tip[TL;DR]
-H1 delivers 30–40% typical cost savings; H2 delivers 40–60% (use the
-[Azure TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/)
-for your estimate). Both horizons feed data into Fabric via mirroring,
-creating a unified analytics platform. MCEM Stage 5 ensures continuous
-optimization beyond the initial migration.
+H1 and H2 outcomes must be measured against the customer's business case, not
+generic savings percentages. Both horizons can feed supported data into Fabric
+via mirroring, creating a governed analytics platform. MCEM Stage 5 keeps cost,
+operations, governance, and adoption improving after migration.
 :::
 
 The workloads are migrated. The analytics platform is live. Now we
@@ -26,13 +25,13 @@ that matter to their leadership team.
 
 ## Outcomes by Horizon
 
-| Outcome                    | Horizon 1                                                    | Horizon 2                                             |
-| -------------------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| **Infrastructure cost**    | ~30-40% typical reduction (right-sizing + reserved instances)| ~40-60% typical reduction (PaaS + serverless)         |
-| **Operational overhead**   | Managed patching, backups, and HA replace manual processes   | Fully managed platform — no infrastructure to operate |
-| **Time to deploy changes** | Days (same as before, but on better infrastructure)          | Minutes (CI/CD pipelines with automated testing)      |
-| **Scale capability**       | Vertical scaling within VM SKU families                      | Elastic horizontal scaling, scale-to-zero             |
-| **Analytics latency**      | Near-real-time via SQL MI Mirroring                          | Near-real-time via Azure SQL DB Mirroring             |
+| Outcome                    | Horizon 1                                                  | Horizon 2                                             |
+| -------------------------- | ---------------------------------------------------------- | ----------------------------------------------------- |
+| **Infrastructure cost**    | Right-sized Azure run rate validated by assessment data    | PaaS and serverless economics validated by telemetry  |
+| **Operational overhead**   | Managed patching, backups, and HA replace manual processes | Fully managed platform — no infrastructure to operate |
+| **Time to deploy changes** | Days (same as before, but on better infrastructure)        | Minutes (CI/CD pipelines with automated testing)      |
+| **Scale capability**       | Vertical scaling within VM SKU families                    | Elastic horizontal scaling, scale-to-zero             |
+| **Analytics latency**      | Near-real-time via SQL MI Mirroring                        | Near-real-time via Azure SQL DB Mirroring             |
 
 :::note[Cost savings are estimates]
 Actual savings vary by workload, SKU selection, and usage patterns. Use the
@@ -43,10 +42,12 @@ for customer-specific projections.
 
 ## Fabric as the Unifier
 
-Regardless of which horizon each workload followed, all data converges
-in Microsoft Fabric. This is the strategic payoff of the entire journey:
+Regardless of which horizon each workload followed, supported mirrored and
+shortcutted data can converge in Microsoft Fabric. This is the strategic payoff
+of the journey:
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph TB
   classDef sql     fill:#0078d4,stroke:#005a9e,color:#fff
   classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
@@ -75,11 +76,17 @@ graph TB
 ```
 
 :::tip[One platform, not two]
-The customer does not need to build separate analytics solutions for H1
-and H2 workloads. Fabric unifies everything in OneLake. As workloads
-evolve from H1 to H2, the data gets richer — but the analytics platform
-is already in place and serving value from day one.
+The customer should not need separate analytics operating models for H1 and H2
+workloads. Fabric can unify mirrored and shortcutted data in OneLake, while
+governance, ownership, endorsement, sensitivity labels, and access reviews make
+the data trustworthy enough to use.
 :::
+
+Fabric is the data-products layer of the journey, not only a SQL mirror
+destination. Each analytics outcome should identify data owners, consumers,
+classification requirements, quality expectations, lifecycle rules, and support
+paths. Microsoft Purview, Fabric workspace governance, and the Fabric adoption
+roadmap provide the operating-model foundation.
 
 ## The Journey Does Not End
 
@@ -89,8 +96,8 @@ Modernization is a journey, not a big bang. After the initial migration:
   the business case justifies it
 - **H2 workloads** continue to modernize — adopting new Azure services,
   improving resilience, expanding capabilities
-- **Fabric** grows with the business — new data sources, new analytics
-  use cases, new AI models
+- **Fabric** grows with the business — new data sources, analytics use cases,
+  and governed AI scenarios where the data and controls are ready
 - **The team** continues to develop cloud skills and operational maturity
 
 The Horizons model ensures that every step forward delivers measurable
@@ -111,12 +118,15 @@ their Azure and Fabric investments:
 - **Fabric expansion** — Onboard new data sources, build additional Power BI
   dashboards, and introduce AI/ML workloads as the data estate grows.
   Emerging capabilities like [Fabric IQ](https://learn.microsoft.com/fabric/iq/overview)
-  (unified data contextualization) and
+  (preview semantic intelligence for Fabric) and
   [Foundry IQ](https://learn.microsoft.com/azure/foundry/agents/concepts/what-is-foundry-iq)
-  (AI agents reasoning over governed data) extend the platform further
+  (preview managed knowledge for agents) can extend the platform further
 - **Governance maturity** — Use [Microsoft Purview](https://learn.microsoft.com/azure/cloud-adoption-framework/data/governance-security-baselines-purview-data-estate-unify-data-platform)
   for unified data governance, classification, and compliance across the
   full data estate — OneLake, Azure, on-premises, and third-party sources
+- **Fabric adoption maturity** — Establish executive sponsorship, content
+  ownership, a Center of Excellence, mentoring, and a community of practice so
+  governed data products become normal ways of working
 - **H1 → H2 evolution** — Re-evaluate H1 workloads periodically; when the
   business case justifies modernization, plan the transition to H2
 - **Skills development** — Continue upskilling the customer team in Azure,

@@ -26,6 +26,7 @@ capability to operate and evolve their Azure environment independently.
 ## Execution by Horizon
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 gantt
   title Migration Execution Timeline
   dateFormat YYYY-MM
@@ -46,14 +47,19 @@ gantt
 
 1. **Prepare landing zone** (CAF [Ready](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/) phase) —
    Azure Virtual Network, NSGs, Azure Backup vaults, monitoring baselines
-2. **Migrate VMs in waves** — Use Azure Migrate to replicate and cut over
-   VMs in planned waves, starting with low-risk workloads
-3. **Migrate databases** — Use the Managed Instance link (preferred for
-   minimal downtime) or Azure Database Migration Service (DMS) for
-   online migration to SQL Managed Instance
-4. **Validate and optimize** — Run functional tests, validate performance,
+2. **Group dependencies into waves** — Keep dependent systems together,
+   start with nonproduction or lower-risk workloads, and document owners,
+   rollback criteria, and success measures for each wave
+3. **Migrate VMs in waves** — Use Azure Migrate to replicate and cut over
+   VMs in planned waves after stakeholder approval of the cutover window
+4. **Migrate databases** — Use the Managed Instance link where SQL MI is the
+   target and near-real-time replication is required. Downtime is limited to
+   the final cutover window, when applications switch to the target endpoint.
+   Use Azure Database Migration Service (DMS) or another approved method when
+   compatibility, version, or process constraints require it
+5. **Validate and optimize** — Run functional tests, validate performance,
    right-size VMs based on actual Azure utilization data
-5. **Enable Fabric mirroring** — Configure SQL MI Mirroring to OneLake
+6. **Enable Fabric mirroring** — Configure SQL MI Mirroring to OneLake
    for workloads where analytics is a strategic priority
 
 ### Horizon 2 — Execution Steps
@@ -74,6 +80,7 @@ gantt
 Every migration wave follows the same validation pattern:
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph LR
   classDef step fill:#0078d4,stroke:#005a9e,color:#fff
   PRE(["<b>Pre-migration</b><br/>Backup, snapshot,<br/>rollback plan"]):::step
@@ -90,6 +97,25 @@ on-premises source is decommissioned. Rollback plans remain active until
 validation is complete.
 :::
 
+## Wave Planning Discipline
+
+CAF migration guidance and Azure Migrate wave planning both emphasize iterative
+execution. Each wave should have:
+
+- Dependency grouping validated by application owners and Azure Migrate data
+- A nonproduction rehearsal or lower-risk production candidate before critical
+  production workloads
+- Migration method selection tied to workload requirements, not preference
+- Planned cutover windows, rollback criteria, and stakeholder approval
+- Post-cutover validation for functionality, performance, security, backup,
+  monitoring, and business acceptance
+
+Lessons from each wave should update later waves. This keeps the roadmap
+evidence-based as new dependencies, constraints, and operating practices emerge.
+Use CAF [migration planning][caf-migration-plan], CAF [wave planning][caf-wave-planning],
+and [MI Link migration][mi-link-migration] guidance as the official execution
+references.
+
 ## Building Customer Capability
 
 Execution is also a learning opportunity. Throughout the migration, the
@@ -105,3 +131,7 @@ By the time the migration is complete, the customer does not just have
 workloads in Azure — they have a team that knows how to operate them.
 
 [← Back to Horizons](/dc2fabric/horizons/) · [Continue to Outcomes →](/dc2fabric/outcomes/)
+
+[caf-migration-plan]: https://learn.microsoft.com/azure/cloud-adoption-framework/migrate/plan-migration
+[caf-wave-planning]: https://learn.microsoft.com/azure/cloud-adoption-framework/migrate/migration-wave-planning
+[mi-link-migration]: https://learn.microsoft.com/azure/azure-sql/managed-instance/managed-instance-link-migrate

@@ -7,8 +7,9 @@ sidebar:
 
 :::tip[TL;DR]
 Azure Migrate assesses the full estate — VMs, .NET apps, and SQL databases —
-producing evidence-based recommendations for each workload. Typically 60-70%
-can migrate as-is; the rest need remediation, modernization, or retirement.
+producing evidence-based recommendations for each workload. The migrate-as-is,
+remediate, modernize, and retire mix is customer-specific and should come from
+discovery, readiness, dependency, sizing, and cost evidence.
 :::
 
 Strategy gave us direction. Now we need evidence. **Azure Migrate** provides
@@ -23,12 +24,24 @@ possible and begin shaping the solution. The assessment transforms abstract
 modernization goals into concrete, workload-specific recommendations backed
 by data — setting the stage for horizons design.
 
+## Decide, Plan, and Execute Evidence
+
+Azure Migrate supports the decide, plan, and execute story for migration and
+modernization. Discovery creates the inventory. Business cases and assessments
+turn that inventory into readiness, right-sizing, cost, dependency, and target
+recommendations. Wave planning then converts those recommendations into an
+execution plan. Use the official [Azure Migrate overview][azure-migrate-overview]
+and [migration planning guidance][azure-migrate-planning] as the source for
+assessment scope and readiness interpretation.
+
 ## Three Dimensions of Assessment
 
-Azure Migrate assesses the estate across three dimensions simultaneously.
-Each dimension produces its own set of findings and recommendations.
+Azure Migrate assesses the estate across three dimensions. Each dimension
+produces findings that must be reviewed with application owners and platform
+teams before the roadmap is approved.
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph LR
   classDef step fill:#0078d4,stroke:#005a9e,color:#fff
   DISCOVER(["<b>Discover</b><br/>Agents scan the<br/>on-prem estate"]):::step
@@ -61,15 +74,16 @@ graph LR
 
 ## What the Assessment Reveals
 
-A typical assessment for an organization with a traditional .NET and SQL Server
-estate reveals a distribution something like this:
+A good assessment replaces assumptions with explicit migration evidence:
 
-| Category                    | Typical Finding                             |
-| --------------------------- | ------------------------------------------- |
-| **Ready to migrate as-is**  | 60-70% of VMs can move with minimal changes |
-| **Needs minor remediation** | 15-20% require OS updates or config changes |
-| **Needs modernization**     | 10-15% would benefit from re-architecture   |
-| **Retire or consolidate**   | 5-10% are unused, redundant, or end-of-life |
+| Evidence area              | What to use it for                                                 |
+| -------------------------- | ------------------------------------------------------------------ |
+| **Azure readiness**        | Identify workloads that are ready, conditionally ready, or blocked |
+| **Right-sizing**           | Compare as-is sizing with performance-based sizing                 |
+| **Cost estimation**        | Build customer-specific run-rate and TCO projections               |
+| **Dependency analysis**    | Group systems that must move together in the same wave             |
+| **Target recommendations** | Compare Azure VM, SQL MI, Azure SQL DB, and modernization options  |
+| **Retirement candidates**  | Remove idle, redundant, or ownerless assets from the plan          |
 
 :::tip[The assessment is not just a migration tool]
 Many customers discover workloads they did not know they had — shadow IT,
@@ -86,3 +100,6 @@ modernization path — whether that is a quick lift-and-shift (Horizon 1)
 or a deeper cloud-native transformation (Horizon 2).
 
 [← Back to Strategy](/dc2fabric/strategy/) · [Continue to Horizons →](/dc2fabric/horizons/)
+
+[azure-migrate-overview]: https://learn.microsoft.com/azure/migrate/migrate-services-overview
+[azure-migrate-planning]: https://learn.microsoft.com/azure/migrate/concepts-migration-planning

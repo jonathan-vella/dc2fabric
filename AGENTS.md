@@ -1,78 +1,107 @@
-# APEX
+# dc2fabric Agent Guide
 
-> Agentic Platform Engineering eXperience for Azure. Verified. Well-Architected. Deployable.
+> Implementation conventions for dc2fabric, the datacenter-to-Azure-and-Fabric modernization journey powered by APEX.
 
-A multi-agent orchestration system for Azure platform engineering.
-Specialized AI agents collaborate through a structured multi-step workflow:
-**Requirements → Architecture → Design → Governance → Plan → Code → Deploy → Documentation**.
+dc2fabric uses the public site for business-domain context and APEX for the agentic infrastructure workflow. Agents
+should understand both layers: the site explains the modernization journey, while this repository's workflow files,
+skills, instructions, and validation scripts define how implementation work is planned, generated, and checked.
+
+## dc2fabric Context
+
+- Treat `site/src/content/docs/` as the source for the modernization story: CAF strategy, MCEM stages, workload
+  assessment, H1 / H2 Horizons, migration execution, Microsoft Fabric outcomes, and industry examples.
+- Treat `.github/skills/workflow-engine/templates/workflow-graph.json` as the source for workflow order, gates,
+  outputs, optional design paths, and Bicep or Terraform routing.
+- Keep APEX terminology when describing the agentic platform. Keep dc2fabric terminology when describing the external
+  product, public documentation, and modernization journey.
+- Do not describe the former weekly upstream sync as active. The workflow file has been deleted, so repo guidance is
+  owned here unless a separate change restores a sync model.
 
 ## Setup Commands
 
 ```bash
-# Create your own repo from the Accelerator template:
-#   https://github.com/jonathan-vella/dc2fabric
-# Then clone YOUR repo and open in dev container
-git clone https://github.com/YOUR-USERNAME/my-infraops-project.git
-cd my-infraops-project
+# Clone this repository and open it in VS Code.
+git clone https://github.com/jonathan-vella/dc2fabric.git
+cd dc2fabric
 code .
-# F1 → Dev Containers: Reopen in Container
 
-# Install Node.js dependencies (validation scripts, linting)
+# F1 -> Dev Containers: Reopen in Container
+
+# Install Node.js dependencies for validation scripts and linting.
 npm install
 
-# Azure + GitHub environment setup (OIDC, secrets, RBAC)
-# See: https://jonathan-vella.github.io/azure-agentic-infraops/getting-started/azure-setup/
+# Optional: one-time replacement for derived repositories created from this repo.
+npm run init -- --dry-run
+npm run init
+
+# Azure and GitHub environment setup for deployment work.
 npm run setup
 ```
 
-> **Note:** Python dependencies (diagrams, Azure Pricing MCP server, apex-recall) are installed
-> automatically by the dev container's `post-create.sh` script. No manual `pip install` is needed.
+Python dependencies for diagrams, Azure Pricing MCP, and `apex-recall` are installed by the dev container's
+`post-create.sh` script. Manual `pip install` should not be needed for normal repository work.
 
-## Build & Validation
+## Build and Validation
 
 ```bash
 # Full validation suite
 npm run validate:all
 
-# Individual checks
-npm run lint:md                          # Markdown linting
-npm run lint:json                        # JSON/JSONC validation
-npm run lint:agent-frontmatter           # Agent definition frontmatter
-npm run lint:skills-format               # Skill file format
-npm run validate:instruction-checks      # Instruction file format and reference validation
-npm run lint:artifact-templates          # Artifact template compliance
-npm run lint:h2-sync                     # H2 heading sync between templates and artifacts
-npm run lint:governance-refs             # Governance reference validation
-npm run validate:session-state           # Session state JSON schema validation
-npm run validate:session-lock            # Session lock/claim model validation
-npm run validate:workflow-graph          # Workflow DAG graph validation
-npm run validate:agent-registry          # Agent registry consistency
-npm run validate:iac-security-baseline   # IaC security baseline (TLS, HTTPS, blob, identity, SQL auth)
-npm run lint:workflow-table-sync          # Workflow table ↔ workflow-graph.json sync
+# Frequently used focused checks
+npm run lint:md
+npm run lint:json
+npm run validate:instruction-checks
+npm run lint:docs-freshness
+npm run validate:no-hardcoded-counts
+npm run validate:workflow-graph
+npm run lint:workflow-table-sync
+npm run validate:agent-registry
+npm run validate:iac-security-baseline
 
-# E2E Ralph Loop
-npm run e2e:validate                     # Validate artifacts (structural, no agent invocation)
-npm run e2e:benchmark                    # Benchmark scoring (8 dimensions, 0-100)
+# Agent and skill checks
+npm run lint:agent-frontmatter
+npm run lint:skills-format
+npm run validate:skill-checks
 
-# Pre-commit/pre-push hooks (installed via lefthook)
-npm run prepare                          # Install hooks
-git push                                 # Triggers diff-based-push-check.sh automatically
+# Artifact and governance checks
+npm run lint:artifact-templates
+npm run lint:h2-sync
+npm run lint:governance-refs
 
-# Bicep validation (replace {project} with actual project name)
+# Session and lock checks
+npm run validate:session-state
+npm run validate:session-lock
+
+# E2E benchmark harness
+npm run e2e:validate
+npm run e2e:benchmark
+```
+
+IaC validation:
+
+```bash
+# Bicep validation, replace {project} with the project folder.
 bicep build infra/bicep/{project}/main.bicep
 bicep lint infra/bicep/{project}/main.bicep
 
-# Terraform validation
+# Terraform validation.
 terraform fmt -check -recursive infra/terraform/
-# Per-project: cd infra/terraform/{project} && terraform init -backend=false && terraform validate
+cd infra/terraform/{project} && terraform init -backend=false && terraform validate
 npm run validate:terraform
+```
+
+Pre-commit and pre-push hooks are installed through Lefthook:
+
+```bash
+npm run prepare
 ```
 
 ## Code Style
 
-### Naming Conventions (CAF)
+### Naming Conventions
 
-Follow Azure Cloud Adoption Framework naming:
+Follow Azure Cloud Adoption Framework naming. Keep names predictable, short enough for Azure limits, and consistent
+across generated artifacts.
 
 | Resource        | Abbreviation | Pattern                     | Max Length |
 | --------------- | ------------ | --------------------------- | ---------- |
@@ -82,9 +111,9 @@ Follow Azure Cloud Adoption Framework naming:
 | Storage Account | `st`         | `st{short}{env}{suffix}`    | 24         |
 | App Service     | `app`        | `app-{project}-{env}`       | 60         |
 
-### Required Tags (Azure Policy Enforced)
+### Required Tags
 
-Every Azure resource must include these 4 tags at minimum:
+Every Azure resource must include the required governance tags unless a generated plan documents an approved exception.
 
 | Tag           | Example Values           |
 | ------------- | ------------------------ |
@@ -93,44 +122,67 @@ Every Azure resource must include these 4 tags at minimum:
 | `Project`     | Project identifier       |
 | `Owner`       | Team or individual name  |
 
-### Default Region
+### Default Regions
 
-- **Primary**: `swedencentral` (EU GDPR-compliant)
-- **Exception**: Static Web Apps → `westeurope`
-- **Failover**: `germanywestcentral`
+- Primary: `swedencentral` for EU GDPR-aligned workloads.
+- Static Web Apps exception: `westeurope`.
+- Failover: `germanywestcentral`.
 
-### Azure Verified Modules (AVM) First
+### Azure Verified Modules First
 
-Always prefer AVM modules over raw resource definitions:
+Prefer Azure Verified Modules over raw resource definitions when an appropriate module exists.
 
-- **Bicep**: `br/public:avm/res/{provider}/{resource}:{version}`
-- **Terraform**: `registry.terraform.io/Azure/avm-res-{provider}-{resource}/azurerm`
+- Bicep: `br/public:avm/res/{provider}/{resource}:{version}`
+- Terraform: `registry.terraform.io/Azure/avm-res-{provider}-{resource}/azurerm`
 
 ### Unique Suffix Pattern
 
-Generate once, pass everywhere:
+Generate a suffix once and pass it everywhere.
 
-- **Bicep**: `uniqueString(resourceGroup().id)`
-- **Terraform**: `random_string` (4 chars, lowercase)
+- Bicep: `uniqueString(resourceGroup().id)`
+- Terraform: `random_string` with lowercase output
 
 ## Security Baseline
 
-These are non-negotiable for all generated infrastructure code:
+These requirements apply to generated Azure infrastructure unless the approved governance constraints say otherwise.
 
-- TLS 1.2 minimum on all services
-- HTTPS-only traffic (`supportsHttpsTrafficOnly: true`)
-- No public blob access (`allowBlobPublicAccess: false`)
-- No shared key access on storage (`allowSharedKeyAccess: false`) — use Entra ID
-- Managed Identity preferred over keys/connection strings
-- Azure AD-only authentication for SQL
-- App Service HTTP/2 enabled (`http20Enabled: true`)
-- Container Registry admin user disabled (`adminUserEnabled: false`)
-- MySQL/PostgreSQL SSL enforcement required
-- Public network access disabled for production data services (dev/test exempt)
-- Never hardcode secrets, connection strings, or API keys — use Key Vault references
-- Always check `04-governance-constraints.md` for subscription-level Azure Policy requirements
+- TLS 1.2 minimum on all services.
+- HTTPS-only traffic where the service supports it.
+- No public blob access.
+- No shared key access on Storage Accounts; use Microsoft Entra ID.
+- Managed identity preferred over keys and connection strings.
+- Microsoft Entra-only authentication for SQL.
+- HTTP/2 enabled for App Service.
+- Container Registry admin user disabled.
+- SSL enforcement for MySQL and PostgreSQL.
+- Public network access disabled for production data services, with documented dev and test exceptions only.
+- No hardcoded secrets, connection strings, API keys, or tokens.
+- Key Vault references for secrets that applications need at runtime.
+- Check `04-governance-constraints.md` before coding infrastructure for subscription-level policy requirements.
 
-## Commit & PR Guidelines
+## Agent Workflow
+
+The workflow is a gated, multi-step APEX process. Use the workflow graph as the machine-readable source of truth rather
+than maintaining a separate hard-coded count or order in prose.
+
+| Step | Phase                  | Agent or Track                 | Main Output                      | Gate       |
+| ---- | ---------------------- | ------------------------------ | -------------------------------- | ---------- |
+| 1    | Requirements           | `02-Requirements`              | `01-requirements.md`             | Approval   |
+| 2    | Architecture           | `03-Architect`                 | Assessment and cost estimate     | Approval   |
+| 3    | Design (optional)      | `04-Design`                    | Diagrams and ADRs                | —          |
+| 3.5  | Governance             | `04g-Governance`               | Governance constraints           | Approval   |
+| 4    | IaC Plan               | `05-IaC Planner`               | Implementation plan and diagrams | Approval   |
+| 5    | IaC Code               | `06b-Bicep` or `06t-Terraform` | IaC project folder               | Validation |
+| 6    | Deploy                 | `07b-Bicep` or `07t-Terraform` | `06-deployment-summary.md`       | Approval   |
+| 7    | As-Built Documentation | `08-As-Built`                  | `07-*.md` documentation suite    | —          |
+
+All workflow artifacts go to `agent-output/{project}/`. The requirements artifact decides the IaC tool, and the
+planner routes implementation to the matching Bicep or Terraform track.
+
+Reviews target AI-generated decisions such as requirements, architecture, governance, plans, and code. Deployment
+previews and plan outputs are treated as tool evidence rather than creative content.
+
+## Commit and PR Guidelines
 
 Use [Conventional Commits](https://www.conventionalcommits.org/):
 
@@ -138,50 +190,30 @@ Use [Conventional Commits](https://www.conventionalcommits.org/):
 <type>[optional scope]: <description>
 ```
 
-| Type       | Purpose                        |
-| ---------- | ------------------------------ |
-| `feat`     | New feature                    |
-| `fix`      | Bug fix                        |
-| `docs`     | Documentation only             |
-| `refactor` | Code refactor (no feature/fix) |
-| `ci`       | CI/config changes              |
-| `chore`    | Maintenance/misc               |
+| Type       | Purpose                               |
+| ---------- | ------------------------------------- |
+| `feat`     | New feature                           |
+| `fix`      | Bug fix                               |
+| `docs`     | Documentation only                    |
+| `refactor` | Code refactor with no behavior change |
+| `ci`       | CI or configuration changes           |
+| `chore`    | Maintenance work                      |
 
-Scopes: `agents`, `skills`, `instructions`, `bicep`, `terraform`, `mcp`, `docs`, `scripts`.
+Useful scopes include `agents`, `skills`, `instructions`, `bicep`, `terraform`, `mcp`, `docs`, and `scripts`.
 
-Always run `npm run lint:md` and relevant validations before committing.
-
-## Agent Workflow
-
-| Step | Phase        | Output                                                   | Review                           |
-| ---- | ------------ | -------------------------------------------------------- | -------------------------------- |
-| 1    | Requirements | `01-requirements.md`                                     | 1×                               |
-| 2    | Architecture | `02-architecture-assessment.md` + cost estimate          | 1× + 1 cost (opt-in: multi-pass) |
-| 3    | Design (opt) | `03-des-*.{py,png,md}` diagrams and ADRs                 | —                                |
-| 3.5  | Governance   | `04-governance-constraints.md/.json`                     | 1×                               |
-| 4    | IaC Plan     | `04-implementation-plan.md` + `04-*-diagram.py/.png`     | opt-in (default: skip)           |
-| 5    | IaC Code     | `infra/bicep/{project}/` or `infra/terraform/{project}/` | opt-in (default: skip)           |
-| 6    | Deploy       | `06-deployment-summary.md`                               | —                                |
-| 7    | As-Built     | `07-*.md` documentation suite                            | —                                |
-| Post | Lessons      | `09-lessons-learned.json/.md`                            | —                                |
-
-All outputs go to `agent-output/{project}/`.
-Programmatic source of truth: `.github/skills/workflow-engine/templates/workflow-graph.json`.
-Unified planner (05-IaC Planner) feeds into dual IaC tracks: Bicep (06b/07b) and Terraform (06t/07t).
-The Orchestrator agent orchestrates the full workflow with human approval gates.
-Review column = adversarial passes by challenger subagents, complexity-dependent
-Complexity-dependent. Conditional early exits reduce actual passes.
-Reviews target AI-generated creative decisions (architecture, governance, plan, code) not
-tool output (what-if/plan previews).
+Run `npm run lint:md` and the relevant focused validations before committing.
 
 ## Conventions Detail
 
-The sections above (Code Style, Security Baseline) are always loaded. For deeper
-guidance, agents should read these on demand:
+Load deeper guidance only when the task touches the related area:
 
-- **Bicep conventions**: `infra/bicep/AGENTS.md`
-- **Terraform conventions**: `infra/terraform/AGENTS.md`
-- **azd multi-project rules**: `.github/instructions/azure-yaml.instructions.md` (auto-loaded for `azure.yaml`)
-- **Azure infrastructure defaults**: `.github/skills/azure-defaults/SKILL.md`
-- **Workflow DAG (machine-readable)**: `.github/skills/workflow-engine/templates/workflow-graph.json`
-- **Full validation reference**: [Validation & Linting Reference](https://jonathan-vella.github.io/azure-agentic-infraops/reference/validation-reference/)
+- Bicep conventions: `infra/bicep/AGENTS.md`
+- Terraform conventions: `infra/terraform/AGENTS.md`
+- Azure Developer CLI manifest rules: `.github/instructions/azure-yaml.instructions.md`
+- Azure defaults: `.github/skills/azure-defaults/SKILL.md`
+- Workflow DAG: `.github/skills/workflow-engine/templates/workflow-graph.json`
+- Count source of truth: `tools/registry/count-manifest.json`
+- Validation reference:
+  [Validation and Linting Reference][validation-reference]
+
+[validation-reference]: https://jonathan-vella.github.io/azure-agentic-infraops/reference/validation-reference/

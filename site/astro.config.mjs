@@ -59,7 +59,7 @@ export default defineConfig({
         },
         {
           label: "Industries",
-          badge: { text: "3 Stories", variant: "tip" },
+          badge: { text: "Stories + Guide", variant: "tip" },
           autogenerate: { directory: "industries" },
         },
       ],

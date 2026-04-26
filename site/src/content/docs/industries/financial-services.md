@@ -1,6 +1,6 @@
 ---
 title: "Woodgrove Bank — Financial Services"
-description: "How a financial services firm modernizes for regulatory compliance, fraud detection, and unified data"
+description: "How a financial services firm modernizes regulatory reporting, fraud detection, and unified data"
 sidebar:
   order: 2
 ---
@@ -8,8 +8,8 @@ sidebar:
 :::tip[TL;DR]
 Woodgrove Bank: 340 VMs, 45 SQL databases, 28 .NET apps. Core banking
 and regulatory systems go H1 (months 1–5); digital banking and fraud
-detection go H2 (months 3–9). Fabric enables real-time transaction
-monitoring for regulatory compliance.
+detection go H2 (months 3–9). Fabric supports governed reporting and
+near-real-time transaction monitoring when controls are configured.
 :::
 
 **Woodgrove Bank** is a regional bank with 200+ branches and a growing
@@ -34,9 +34,9 @@ Woodgrove faces a convergence of pressures:
   no unified view of customer relationships across products.
 
 :::note[Why now?]
-The regulator has issued new guidance requiring near-real-time
-transaction monitoring by Q3 next year. Woodgrove's current
-batch-processing architecture cannot meet this requirement.
+The regulator has issued new guidance requiring near-real-time transaction
+monitoring by Q3 next year. Woodgrove's current batch-processing architecture
+cannot meet this requirement.
 Compliance failure carries significant financial and reputational risk.
 :::
 
@@ -54,7 +54,7 @@ Azure Migrate reveals the estate:
 
 | Workload                       | Horizon | Rationale                                                |
 | ------------------------------ | ------- | -------------------------------------------------------- |
-| Core banking systems           | **H1**  | Stability is paramount, near-zero downtime tolerance     |
+| Core banking systems           | **H1**  | Stability is paramount, minimal-downtime cutover needed  |
 | Regulatory reporting databases | **H1**  | Data sovereignty requirements met by SQL MI in-region    |
 | Digital banking app            | **H2**  | Customer-facing, needs elastic scale and rapid iteration |
 | Fraud detection engine         | **H2**  | Needs real-time processing, ML integration               |
@@ -79,6 +79,7 @@ Azure Migrate reveals the estate:
 ## The Payoff
 
 ```mermaid
+%%{init: {'theme':'neutral'}}%%
 graph TB
   classDef azure   fill:#0078d4,stroke:#005a9e,color:#fff
   classDef onelake fill:#742774,stroke:#5a1e5a,color:#fff
@@ -109,10 +110,12 @@ graph TB
 **Business outcomes:**
 
 - Regulatory reporting reduced from weeks to hours — automated dashboards
-  in Power BI with full data lineage via Fabric
-- Real-time fraud detection using ML models trained on unified transaction
-  data in Fabric, replacing the legacy batch-processing system
-- Digital banking app handles 10x traffic spikes without degradation,
-  improving customer satisfaction scores
+  in Power BI with lineage, ownership, and controls configured in Fabric and
+  Microsoft Purview
+- Near-real-time fraud detection using ML models trained on unified transaction
+  data in Fabric, complementing the legacy batch-processing system during
+  phased transition
+- Digital banking app is designed and tested for traffic spikes with Azure
+  Container Apps autoscaling and production performance validation
 - Unified customer view across all acquired banking systems — for the
-  first time, Woodgrove can see the full customer relationship
+  first time, Woodgrove can analyze customer relationships across products
