@@ -69,8 +69,9 @@ th {
   max-width: 10rem;
 }
 
-.mcem-stage--fabric {
-  background: #742774;
+.mcem-stage--growth {
+  background: linear-gradient(135deg, #742774 0%, #8e3b88 100%);
+  box-shadow: 0 10px 24px rgba(116, 39, 116, 0.18);
 }
 
 .mcem-badge {
@@ -114,6 +115,21 @@ th {
   border-left-color: #0078d4;
 }
 
+.mcem-journey > .mcem-connector:last-of-type {
+  background: linear-gradient(90deg, #0078d4 0%, #742774 100%);
+}
+
+.mcem-journey > .mcem-connector:last-of-type::after {
+  border-left-color: #742774;
+}
+
+.mcem-journey-note {
+  margin: -0.75rem 0 2rem;
+  color: var(--sl-color-gray-2);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 @media (max-width: 640px) {
   .mcem-journey {
     flex-direction: column;
@@ -135,5 +151,17 @@ th {
     border: 6px solid transparent;
     border-top-color: #0078d4;
     border-left-color: transparent;
+  }
+
+  .mcem-journey > .mcem-connector:last-of-type {
+    background: linear-gradient(180deg, #0078d4 0%, #742774 100%);
+  }
+
+  .mcem-journey > .mcem-connector:last-of-type::after {
+    border-top-color: #742774;
+  }
+
+  .mcem-journey-note {
+    margin-top: 0;
   }
 }
