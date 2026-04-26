@@ -68,7 +68,10 @@ export default defineConfig({
           items: [
             { label: "Industry Stories", link: "/industries/" },
             { label: "Manufacturing", link: "/industries/manufacturing/" },
-            { label: "Financial Services", link: "/industries/financial-services/" },
+            {
+              label: "Financial Services",
+              link: "/industries/financial-services/",
+            },
             { label: "Retail", link: "/industries/retail/" },
           ],
         },

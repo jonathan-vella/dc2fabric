@@ -51,8 +51,8 @@ Azure Migrate reveals the estate:
 
 ## The Path Decision
 
-| Workload                     | Path      | Rationale                                      |
-| ---------------------------- | ------- | ---------------------------------------------- |
+| Workload                     | Path          | Rationale                                      |
+| ---------------------------- | ------------- | ---------------------------------------------- |
 | ERP and inventory management | **Stabilize** | Stable, back-office, moderate change frequency |
 | Loyalty program backend      | **Stabilize** | Works well, just needs better infrastructure   |
 | E-commerce platform          | **Transform** | Must scale elastically, needs rapid deployment |

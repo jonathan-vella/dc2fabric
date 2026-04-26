@@ -102,14 +102,14 @@ SKU, scaling rules, and reservation strategy.
 ## Before and After
 
 | Dimension            | Before (Stabilize or on-prem) | After (Transform)                   |
-| -------------------- | --------------------------- | ----------------------------------- |
-| **Application**      | .NET Framework on IIS / VMs | .NET 8+ on Azure Container Apps     |
-| **Database**         | SQL Server or SQL MI        | Azure SQL Database (serverless)     |
-| **Deployment**       | Manual or scripted          | CI/CD via GitHub Actions            |
-| **Scaling**          | Vertical (resize VM)        | Horizontal autoscale, scale-to-zero |
-| **Cost model**       | Fixed VM costs              | Pay-per-use, serverless             |
-| **Analytics**        | Limited or batch            | Real-time via Fabric mirroring      |
-| **Typical timeline** | —                           | **3–6 months**                      |
+| -------------------- | ----------------------------- | ----------------------------------- |
+| **Application**      | .NET Framework on IIS / VMs   | .NET 8+ on Azure Container Apps     |
+| **Database**         | SQL Server or SQL MI          | Azure SQL Database (serverless)     |
+| **Deployment**       | Manual or scripted            | CI/CD via GitHub Actions            |
+| **Scaling**          | Vertical (resize VM)          | Horizontal autoscale, scale-to-zero |
+| **Cost model**       | Fixed VM costs                | Pay-per-use, serverless             |
+| **Analytics**        | Limited or batch              | Real-time via Fabric mirroring      |
+| **Typical timeline** | —                             | **3–6 months**                      |
 
 :::tip[Not every workload needs Transform]
 Transform delivers the most value for workloads that are actively

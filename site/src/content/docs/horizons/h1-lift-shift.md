@@ -118,6 +118,6 @@ Once workloads are running in Azure, you have two paths:
    Add [Fabric integration via SQL MI Mirroring](/dc2fabric/horizons/h1-fabric/)
    to unlock analytics without any further changes.
 2. **Evolve to Transform** — For workloads that need elasticity, modern DevOps, or
-  cloud-native capabilities, plan a [Transform modernization](/dc2fabric/horizons/h2-modernize/).
+   cloud-native capabilities, plan a [Transform modernization](/dc2fabric/horizons/h2-modernize/).
 
 [← Back to Modernization Paths](/dc2fabric/horizons/) · [Next: Stabilize + Fabric →](/dc2fabric/horizons/h1-fabric/)
